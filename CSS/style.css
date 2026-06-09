@@ -839,82 +839,128 @@ body:has(.container-recuperar) form {
 }
 
 /* ===================================================
-    DASHBOARD / PAINEL GERAL 
+
+DASHBOARD / PAINEL GERAL
+
 ======================================================*/
 
 /* Container principal que junta a sidebar e o conteúdo */
+
 .container {
   display: flex;
+
   background-color: var(--cor-escura);
+
   min-height: 100vh;
 }
 
 /* SIDEBAR LATERAL FIXA */
+
 .sidebar {
   width: 240px; /* Aumentado levemente para acomodar melhor fontes estilizadas */
+
   height: 100vh;
+
   background-color: var(--fundo-campo); /* Fundo ultra escuro */
+
   border-right: 1px solid var(--borda-campo);
+
   color: var(--cor-primaria);
+
   padding: 25px 20px;
+
   position: fixed;
+
   top: 0;
+
   left: 0;
+
   z-index: 100;
+
   display: flex;
+
   flex-direction: column;
 }
 
 .sidebar h2 {
   font-size: var(--texto-padrao);
+
   font-weight: 700;
+
   color: var(--cor-clara);
+
   margin-bottom: 25px;
+
   letter-spacing: 0.5px;
 }
 
 .sidebar a {
   display: block;
+
   color: var(--cor-texto-campo);
+
   text-decoration: none;
+
   padding: 12px 15px;
+
   border-radius: var(--radius-card);
+
   font-size: var(--texto-pequeno);
+
   transition: var(--transition-padrao) ease;
+
   margin-bottom: 5px;
 }
 
 .sidebar a:hover {
   background-color: var(--cor-card);
+
   color: var(--cor-clara);
 }
 
 /* ÁREA DE CONTEÚDO PRINCIPAL (Fica ao lado da barra lateral) */
+
 .content {
   margin-left: 240px; /* Alinhado exatamente com a largura da sidebar */
+
   padding: 30px;
+
   width: calc(100% - 240px);
+
   min-height: 100vh;
 }
 
 /* BARRA SUPERIOR DE STATUS/BOAS-VINDAS */
+
 .topbar {
   background: var(--fundo-login);
+
   border: var(--borda-login);
+
   padding: 20px;
+
   border-radius: var(--radius-campo);
+
   margin-bottom: 25px;
+
   backdrop-filter: blur(var(--blur-login));
+
   -webkit-backdrop-filter: blur(var(--blur-login));
 }
 
 /* CARDS DE INFORMAÇÕES DO PAINEL */
+
 .card {
   background-color: var(--cor-card); /* Verde oliva profundo */
+
   border: 1px solid rgba(255, 255, 255, 0.05);
+
   padding: 20px;
+
   border-radius: var(--radius-campo);
+
   margin-bottom: 20px;
+
   box-shadow: var(--sombra);
 }
 
@@ -923,16 +969,26 @@ body:has(.container-recuperar) form {
 }
 
 /* INPUTS GERAIS DO PAINEL */
+
 input {
   width: 100%;
+
   padding: var(--padding-campo);
+
   margin: 10px 0;
+
   background-color: var(--fundo-campo);
+
   border: var(--borda-campo);
+
   border-radius: var(--radius-campo);
+
   color: var(--cor-clara);
+
   font-size: var(--texto-pequeno);
+
   outline: none;
+
   transition: var(--transition-padrao);
 }
 
@@ -945,43 +1001,65 @@ input:focus {
 }
 
 /* BOTÕES GERAIS DO PAINEL */
+
 button {
   background-color: var(--cor-secundaria); /* Verde de destaque */
+
   color: var(--cor-clara);
+
   padding: 14px;
+
   width: 100%;
+
   border-radius: var(--radius-campo);
+
   font-size: var(--texto-pequeno);
+
   font-weight: bold;
+
   cursor: pointer;
+
   transition: var(--transition-padrao) ease;
+
   border: none;
+
   margin-top: 12px;
+
   box-shadow: var(--sombra-botao);
 }
 
 button:hover {
   background-color: var(--cor-secundaria-hover);
+
   transform: translateY(
     -1px
   ); /* Efeito suave de subida em vez de escala bruta */
 }
 
 /* LISTAS (Ex: Listagem de Pedidos ou Histórico) */
+
 li {
   background-color: var(--fundo-campo);
+
   border: var(--borda-campo);
+
   padding: 15px;
+
   margin-top: 10px;
+
   border-radius: var(--radius-card);
+
   transition: var(--transition-padrao) ease;
+
   color: var(--cor-texto-campo);
+
   list-style: none; /* Remove as bolinhas padrão da lista */
 }
 
 li:hover {
   border-color: var(--cor-secundaria);
+
   color: var(--cor-clara);
+
   transform: translateX(4px); /* Animação sutil para o lado ao passar o mouse */
 }
-

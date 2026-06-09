@@ -50,7 +50,29 @@
                     <tbody></tbody>
                 </table>
 
-                
+                <button onclick="finalizarCompra()">
+                    Finalizar
+                </button>
+
+                <hr>
+
+                <h3>
+                    Total: R$
+                    <span id="total">0.00</span>
+                </h3>
+
+                <input type="number" id="descontoValor" placeholder="Desconto em R$">
+
+                <input type="number" id="descontoPercentual" placeholder="Desconto em %">
+
+                <button onclick="aplicarDesconto()">
+                    Aplicar Desconto
+                </button>
+
+                <h2>
+                    Valor Líquido:
+                    R$ <span id="valorLiquido">0.00</span>
+                </h2>
 
             </section>
 
@@ -58,7 +80,7 @@
 
     </div>
 
-    <script src="JS/script1.js"></script>
+    <script src="JS/script.js"></script>
 
 </body>
 

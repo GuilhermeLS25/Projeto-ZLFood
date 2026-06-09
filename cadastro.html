@@ -30,8 +30,8 @@
         <div class="divisoria"></div>
 
         <div class="mensagem">
-            <h1 class="bemVindo">Bem-Vindo</h1>
-            <p class="deVolta">de volta !</p>
+            <h1 class="bemVindo">Cadastre-se</h1>
+            <p class="deVolta">Agora!</p>
         </div>
     </header>
 
@@ -42,33 +42,82 @@
 
                 <div class="campos">
                     <div class="conta">
-                        <ion-icon id="home" name="storefront"></ion-icon>
-                        <h2 id="acesseConta">Acesse sua Conta</h2>
-                        <p id="dados">Preencha seus dados para entrar no sistema</p>
+                        <ion-icon id="home" name="person-add-outline"></ion-icon>
+                        <h1 id="acesseConta">Cadastre sua Conta</h1>
                     </div>
 
+                    <label id class="email-label">Nome</label>
+                    <div class="email">
+                        <ion-icon name="mail"></ion-icon>
+                        <input class="email" placeholder="Nome Completo" type="text" required>
+                    </div>
                     <label class="email-label">E-Mail</label>
                     <div class="email">
                         <ion-icon name="mail"></ion-icon>
                         <input class="email" placeholder="Digite seu e-mail" type="email" required>
                     </div>
 
+
                     <label class="senha-label">Senha</label>
                     <div class="senha">
                         <ion-icon name="lock-closed"></ion-icon>
-                        <input class="senha" placeholder="Digite sua senha" type="password" required>
+                        <input class="senha" placeholder="Crie uma senha" type="password" required>
                     </div>
-                    
+
                     <div class="senha">
-                        <ion-icon name="lock-closed"></ion-icon>
+                        <ion-icon name="checkmark-circle-outline"></ion-icon>
                         <input class="senha" placeholder="Confirme sua senha" type="password" required>
                     </div>
                 </div>
 
                 <div class="divisor"></div>
 
+                <div class="termos-container">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="aceitarTermos" />
+                        <span class="custom-checkbox"></span>
+                        <span class="termos-texto">
+                            Eu li e aceito os <a href="#" class="termos-link">Termos de Uso</a> e a <a href="#"
+                                class="termos-link">Política de Privacidade</a>.
+                        </span>
+                    </label>
+                </div>
+
+                <div class="divisor"></div>
+                
+                <fieldset id="perfil">
+                    <legend>Selecione seu Perfil</legend>
+                    <div class="opcoes-perfil">
+
+                        <label class="card-perfil">
+                            <ion-icon name="fast-food-outline" class="icone-card"></ion-icon>
+
+                            <div class="texto-card">
+                                <strong>Cliente</strong>
+                                <span>Fazer Pedidos</span>
+                            </div>
+
+                            <input type="radio" name="perfil" value="cliente" checked required>
+                            <span class="custom-radio"></span>
+                        </label>
+
+                        <label class="card-perfil">
+                            <ion-icon name="bicycle-outline" class="icone-card"></ion-icon>
+
+                            <div class="texto-card">
+                                <strong>Entregador</strong>
+                                <span>Fazer Entregas</span>
+                            </div>
+
+                            <input type="radio" name="perfil" value="entregador">
+                            <span class="custom-radio"></span>
+                        </label>
+
+                    </div>
+                </fieldset>
+
                 <div id="entrar">
-                    <button type="submit" id="btn-entrar">Entrar</button>
+                    <button type="submit" onclick="cadastrar(event)">Cadastrar</button>
                 </div>
 
                 <div class="divisor"></div>
