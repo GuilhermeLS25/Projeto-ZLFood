@@ -132,11 +132,11 @@ body {
 body.page-recover {
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 10px;
 }
 
 a {
-  color: inherit;
+  color: var(--cor-primaria);
   text-decoration: none;
 }
 
@@ -147,10 +147,19 @@ svg {
 }
 
 button,
-input,
 select,
 textarea {
-  font: inherit;
+  font: var(--fonte-principal);
+}
+
+input {
+  width: 250px;
+  height: 35px;
+  padding: 5px 10px;
+}
+
+input::placeholder {
+  font-family: var(--fonte-principal)
 }
 
 hr {
@@ -214,6 +223,7 @@ header.header-main {
 .conta {
   align-items: center;
   text-align: center;
+  font-size: 25px;
 }
 
 .bemVindo {
@@ -253,6 +263,10 @@ header.header-main {
 }
 
 #home {
+  font-size: 125px;
+}
+
+#home1 {
   font-size: 100px;
 }
 
@@ -307,6 +321,7 @@ header.header-main {
   font-size: var(--texto-padrao);
   font-weight: bold;
   color: var(--cor-primaria);
+  margin: 5px;
 }
 
 #esqueciSenha a {
@@ -498,6 +513,7 @@ header.header-main {
   display: flex;
   flex-direction: column;
   margin: auto;
+  font-family: var(--fonte-principal);
 }
 
 .voltar a {
@@ -512,6 +528,18 @@ header.header-main {
 }
 
 .voltar a:hover {
+  color: var(--cor-primaria);
+}
+
+.voltar1 a {
+  color: var(--cor-texto-campo);
+  text-decoration: none;
+  font-size: 20px;
+  align-items: center;
+  transition: var(--transition-padrao);
+}
+
+.voltar1 a:hover {
   color: var(--cor-primaria);
 }
 

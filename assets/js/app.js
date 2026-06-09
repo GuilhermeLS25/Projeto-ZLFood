@@ -17,15 +17,15 @@ const logar = (event) => {
   const senha = senhaLogin?.value.trim();
 
   if (!email || !senha) {
-    alert("⚠️ Ops! Preencha o e-mail e a senha para entrar.");
+    alert("Preencha o e-mail e a senha para entrar.");
     return;
   }
 
   if (email === "admin@email.com" && senha === "123456") {
-    alert("🎉 Login realizado com sucesso! Redirecionando...");
-    window.location.href = "cliente.html";
+    alert("Login realizado com sucesso! Redirecionando...");
+    window.location.href = "painel-cliente.html";
   } else {
-    alert("❌ E-mail ou senha incorretos. Tente novamente!");
+    alert("E-mail ou senha incorretos. Tente novamente!");
   }
 };
 
@@ -45,28 +45,28 @@ const cadastrar = (event) => {
 
   if (checkboxTermos && !checkboxTermos.checked) {
     alert(
-      "⚠️ Atenção: Você precisa aceitar os Termos de Uso e a Política de Privacidade para continuar.",
+      "Você precisa aceitar os Termos para continuar!",
     );
     return;
   }
 
   if (!nome || !email) {
-    alert("❌ Por favor, preencha os campos de Nome e E-mail!");
+    alert("Preencha todos campos");
     return;
   }
 
   if (!senha || !confirmeSenha) {
-    alert("🔑 Você precisa criar a senha e confirmá-la.");
+    alert("Você precisa criar a senha e confirmá-la.");
     return;
   }
 
   if (senha !== confirmeSenha) {
-    alert("❌ As senhas não conferem. Verifique e tente novamente.");
+    alert("As senhas não são iguais. Verifique-as.");
     return;
   }
 
   alert(
-    `🚀 Sucesso! Conta de ${nome} criada com sucesso. Faça login para continuar.`,
+    `Sua Conta foi criada com sucesso!! Redirecionando...`,
   );
   window.location.href = "index.html";
 };
