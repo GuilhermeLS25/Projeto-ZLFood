@@ -1,7 +1,6 @@
 /* ==================================================
    ROOT - VARIÁVEIS GLOBAIS
 ================================================== */
-
 :root {
   /* Cores */
   --cor-primaria: #8bae66;
@@ -76,38 +75,25 @@
 
 @media (prefers-color-scheme: light) {
   :root {
-    /* Cores - Invertidas para garantir legibilidade no escuro */
-    --cor-primaria: #e2e9de; /* Texto principal (passou de verde médio para um off-white confortável) */
-    --cor-secundaria: #8bae66; /* Verde de destaque (antiga cor primária) */
-    --cor-secundaria-hover: #a3c983; /* Verde mais claro/vivo para o efeito hover */
-    --cor-card: #222d1a; /* Fundo do card (verde oliva bem profundo) */
+    --cor-primaria: #e2e9de;
+    --cor-secundaria: #8bae66;
+    --cor-secundaria-hover: #a3c983;
+    --cor-card: #222d1a;
 
-    --cor-escura: #0d120a; /* Base ultra escura */
-    --cor-clara: #ffffff; /* Mantido para realces brancos absolutos */
+    --cor-escura: #0d120a;
+    --cor-clara: #ffffff;
 
-    --cor-texto-campo: #ced4ca; /* Texto digitado nos inputs (mais claro) */
-    --cor-texto-placeholder: #687261; /* Placeholder sutil no escuro */
-    --cor-label: #a6c875; /* Labels em um verde claro bem visível */
+    --cor-texto-campo: #ced4ca;
+    --cor-texto-placeholder: #687261;
+    --cor-label: #a6c875;
 
-    --branco-50: rgba(
-      255,
-      255,
-      255,
-      0.15
-    ); /* Opacidades reduzidas para não estourarem no fundo escuro */
+    --branco-50: rgba(255, 255, 255, 0.15);
     --branco-20: rgba(255, 255, 255, 0.05);
 
-    /* Backgrounds */
-    --imagem-fundo: url("../images/light.png"); /* Dica: se tiver uma versão dark da imagem, mude o nome aqui */
-    --fundo-login: rgba(
-      14,
-      18,
-      11,
-      0.75
-    ); /* Glassmorphism mais escuro e denso para dar contraste */
-    --fundo-campo: #090d07; /* Fundo dos inputs quase preto */
+    --imagem-fundo: url("../images/light.png");
+    --fundo-login: rgba(14, 18, 11, 0.75);
+    --fundo-campo: #090d07;
 
-    /* Sombras - Mais intensas/escuras, pois fundos escuros absorvem sombra */
     --sombra: 0px 8px 30px rgba(0, 0, 0, 0.5);
     --sombra-login: 0 8px 32px rgba(0, 0, 0, 0.7);
     --sombra-botao: 0 4px 12px rgba(0, 0, 0, 0.4);
@@ -115,33 +101,27 @@
 }
 
 /* ==================================================
-   RESET
+   RESET E BASE
 ================================================== */
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: var(--fonte-principal);
-  font-weight: 400;
-  font-style: normal;
-  color: var(--cor-primaria);
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-/* ==================================================
-   BODY
-================================================== */
-
 body {
   min-height: 100vh;
   display: flex;
   justify-content: space-between;
-  align-items: start;
-
+  align-items: flex-start;
+  font-family: var(--fonte-principal);
+  font-weight: 400;
+  font-style: normal;
+  color: var(--cor-primaria);
   background-image: var(--imagem-fundo);
   background-size: cover;
   background-position: center;
@@ -149,24 +129,51 @@ body {
   background-attachment: fixed;
 }
 
-form {
+body.page-recover {
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--branco-50);
+  margin: 24px 0;
+}
+
+/* ==================================================
+   AUTENTICAÇÃO
+================================================== */
+body.page-auth form {
   width: var(--largura-form);
   height: 100vh;
 }
 
-/* ==================================================
-   HEADER
-================================================== */
-
-header {
+header.header-main {
   position: sticky;
   top: 0;
   z-index: 9999;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   padding: var(--padding-header);
 }
 
@@ -192,12 +199,8 @@ header {
   width: 100%;
   height: 1px;
   background-color: var(--branco-50);
-  margin: 10px;
+  margin: 10px 0;
 }
-
-/* ==================================================
-   MENSAGENS
-================================================== */
 
 .mensagem,
 .conta {
@@ -233,27 +236,18 @@ header {
   font-weight: 700;
 }
 
-/* ==================================================
-   LOGIN (PAI)
-================================================== */
-
 .login {
   width: 100%;
   height: 100%;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
-
   padding: var(--padding-login);
-
   background: var(--fundo-login);
   border-left: var(--borda-login);
   border-radius: var(--radius-login);
-
   box-shadow: var(--sombra-login);
-
   backdrop-filter: blur(var(--blur-login));
   -webkit-backdrop-filter: blur(var(--blur-login));
 }
@@ -266,54 +260,49 @@ header {
   text-align: right;
 }
 
-/* ==================================================
-   CAMPOS DE EMAIL E SENHA. (FILHOS)
-================================================== */
-
 .email,
-.senha {
+.senha,
+.input-com-icone {
   display: flex;
   align-items: center;
-
+  gap: var(--gap-campo);
   background-color: var(--fundo-campo);
   border: var(--borda-campo);
   border-radius: var(--radius-campo);
-
   padding: var(--padding-campo);
-  gap: var(--gap-campo);
   margin-top: 1px;
-
   font-size: var(--texto-padrao);
-
-  padding: 9px;
 }
 
 .email ion-icon,
-.senha ion-icon {
+.senha ion-icon,
+.input-com-icone ion-icon {
   color: var(--cor-texto-campo);
   font-size: var(--icone-campo);
 }
 
 .email input,
-.senha input {
+.senha input,
+.input-com-icone input {
   width: 100%;
   flex: 1;
-
   background: transparent;
   border: none;
   outline: none;
-
   color: var(--cor-texto-campo);
   font-size: var(--texto-padrao);
 }
 
 .email input::placeholder,
-.senha input::placeholder {
+.senha input::placeholder,
+.input-com-icone input::placeholder {
   color: var(--cor-texto-placeholder);
 }
 
 .email-label,
-.senha-label {
+.senha-label,
+.campo-email label,
+#perfil legend {
   display: block;
   font-size: var(--texto-padrao);
   font-weight: bold;
@@ -325,9 +314,61 @@ header {
   font-size: var(--texto-pequeno);
 }
 
-/* ==================================================
-   PERFIL
-================================================== */
+.termos-container {
+  margin: 0;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  position: relative;
+  color: var(--cor-texto-campo);
+  font-size: var(--texto-pequeno);
+}
+
+.checkbox-label input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.custom-checkbox {
+  width: 18px;
+  height: 18px;
+  border: var(--borda-campo);
+  border-radius: 6px;
+  background: var(--fundo-campo);
+  flex-shrink: 0;
+  position: relative;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .custom-checkbox {
+  background: var(--cor-secundaria);
+  border-color: var(--cor-secundaria);
+}
+
+.checkbox-label input[type="checkbox"]:checked + .custom-checkbox::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 6px;
+  width: 4px;
+  height: 8px;
+  border: solid var(--cor-clara);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.termos-texto {
+  line-height: 1.5;
+}
+
+.termos-link {
+  color: var(--cor-primaria);
+}
 
 #perfil {
   border: none;
@@ -336,10 +377,7 @@ header {
 }
 
 #perfil legend {
-  color: var(--cor-primaria);
-  font-weight: bold;
   margin-bottom: 10px;
-  font-size: var(--texto-padrao);
   margin-top: 12px;
 }
 
@@ -348,24 +386,15 @@ header {
   gap: var(--gap-cards);
 }
 
-/* ==================================================
-   CARD PERFIL
-================================================== */
-
 .card-perfil {
   flex: 1;
-
   display: flex;
   align-items: center;
-
   position: relative;
   cursor: pointer;
-
   padding: var(--padding-card);
-
   background-color: var(--cor-card);
   border-radius: var(--radius-card);
-
   transition: var(--transition-padrao);
 }
 
@@ -388,22 +417,13 @@ header {
 .texto-card strong {
   font-size: var(--texto-padrao);
   font-weight: bold;
-  color: white;
+  color: var(--cor-clara);
 }
 
 .texto-card span {
   font-size: var(--texto-pequeno);
   opacity: 0.8;
-  color: white;
 }
-
-.card-perfil ion-icon {
-  font-size: var(--icone-card);
-}
-
-/* ==================================================
-   APARENCIA DO SELETOR
-================================================== */
 
 .card-perfil input[type="radio"] {
   position: absolute;
@@ -414,10 +434,8 @@ header {
 .custom-radio {
   position: absolute;
   right: 15px;
-
   width: 18px;
   height: 18px;
-
   border: var(--borda-card-radio);
   border-radius: var(--radius-circulo);
 }
@@ -427,41 +445,30 @@ header {
   position: absolute;
   top: 3px;
   left: 3px;
-
   width: 8px;
   height: 8px;
-
   background: var(--cor-clara);
   border-radius: var(--radius-circulo);
 }
 
-/* ==================================================
-   BOTÃO ENTRAR
-================================================== */
-
-#entrar button {
+#entrar button,
+#btn-enviar {
   width: 100%;
-
   padding: 1px;
-
   border: none;
   border-radius: var(--radius-campo);
-
   background-color: var(--cor-card);
   color: var(--cor-clara);
-
   font-size: var(--texto-grande);
   font-weight: bold;
-
   cursor: pointer;
-
   box-shadow: var(--sombra-botao);
   transition: var(--transition-padrao);
-
   margin-bottom: 12px;
 }
 
-#entrar button:hover {
+#entrar button:hover,
+#btn-enviar:hover {
   background-color: var(--cor-secundaria-hover);
 }
 
@@ -475,22 +482,259 @@ header {
   font-size: var(--texto-pequeno);
 }
 
-/* ===================================================
-    ENTREGADOR
-======================================================*/
+/* ==================================================
+   RECUPERAÇÃO DE SENHA
+================================================== */
+.container-recuperar {
+  background: var(--fundo-login);
+  border: var(--borda-login);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: var(--sombra-login);
+  backdrop-filter: blur(var(--blur-login));
+  -webkit-backdrop-filter: blur(var(--blur-login));
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
 
-/* Container do App adaptado para Desktop (Layout Split de Tela Cheia) */
+.voltar a {
+  color: var(--cor-texto-campo);
+  text-decoration: none;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 30px;
+  transition: var(--transition-padrao);
+}
+
+.voltar a:hover {
+  color: var(--cor-primaria);
+}
+
+.cabecalho {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#icone-cadeado {
+  font-size: 45px;
+  color: var(--cor-primaria);
+  margin-bottom: 15px;
+}
+
+.cabecalho h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--cor-primaria);
+  margin-bottom: 12px;
+  line-height: var(--line-height-titulos);
+}
+
+.cabecalho p {
+  font-size: 14px;
+  color: var(--cor-texto-campo);
+  line-height: 1.5;
+}
+
+.campo-email {
+  margin-bottom: 25px;
+  width: 100%;
+}
+
+.campo-email label {
+  margin-bottom: 10px;
+}
+
+.input-com-icone {
+  background-color: var(--fundo-campo);
+}
+
+.input-com-icone input {
+  color: var(--cor-clara);
+  font-size: 16px;
+}
+
+#btn-enviar {
+  padding: 16px;
+  font-size: 16px;
+}
+
+/* ==================================================
+   DASHBOARD / PAINEL GERAL
+================================================== */
+.container {
+  display: flex;
+  background-color: var(--cor-escura);
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 240px;
+  height: 100vh;
+  background-color: var(--fundo-campo);
+  border-right: 1px solid var(--borda-campo);
+  color: var(--cor-primaria);
+  padding: 25px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar h2 {
+  font-size: var(--texto-padrao);
+  font-weight: 700;
+  color: var(--cor-clara);
+  margin-bottom: 25px;
+  letter-spacing: 0.5px;
+}
+
+.sidebar a {
+  display: block;
+  color: var(--cor-texto-campo);
+  text-decoration: none;
+  padding: 12px 15px;
+  border-radius: var(--radius-card);
+  font-size: var(--texto-pequeno);
+  transition: var(--transition-padrao) ease;
+  margin-bottom: 5px;
+}
+
+.sidebar a:hover {
+  background-color: var(--cor-card);
+  color: var(--cor-clara);
+}
+
+.content {
+  margin-left: 240px;
+  padding: 30px;
+  width: calc(100% - 240px);
+  min-height: 100vh;
+}
+
+.topbar {
+  background: var(--fundo-login);
+  border: var(--borda-login);
+  padding: 20px;
+  border-radius: var(--radius-campo);
+  margin-bottom: 25px;
+  backdrop-filter: blur(var(--blur-login));
+  -webkit-backdrop-filter: blur(var(--blur-login));
+}
+
+.card {
+  background-color: var(--cor-card);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: var(--radius-campo);
+  margin-bottom: 20px;
+  box-shadow: var(--sombra);
+}
+
+.card * {
+  color: var(--cor-clara);
+}
+
+input {
+  width: 100%;
+  padding: var(--padding-campo);
+  margin: 10px 0;
+  background-color: var(--fundo-campo);
+  border: var(--borda-campo);
+  border-radius: var(--radius-campo);
+  color: var(--cor-clara);
+  font-size: var(--texto-pequeno);
+  outline: none;
+  transition: var(--transition-padrao);
+}
+
+input::placeholder {
+  color: var(--cor-texto-placeholder);
+}
+
+input:focus {
+  border-color: var(--cor-secundaria);
+}
+
+button {
+  background-color: var(--cor-secundaria);
+  color: var(--cor-clara);
+  padding: 14px;
+  width: 100%;
+  border-radius: var(--radius-campo);
+  font-size: var(--texto-pequeno);
+  font-weight: bold;
+  cursor: pointer;
+  transition: var(--transition-padrao) ease;
+  border: none;
+  margin-top: 12px;
+  box-shadow: var(--sombra-botao);
+}
+
+button:hover {
+  background-color: var(--cor-secundaria-hover);
+  transform: translateY(-1px);
+}
+
+li {
+  background-color: var(--fundo-campo);
+  border: var(--borda-campo);
+  padding: 15px;
+  margin-top: 10px;
+  border-radius: var(--radius-card);
+  transition: var(--transition-padrao) ease;
+  color: var(--cor-texto-campo);
+  list-style: none;
+}
+
+li:hover {
+  border-color: var(--cor-secundaria);
+  color: var(--cor-clara);
+  transform: translateX(4px);
+}
+
+#tabelaProdutos {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+}
+
+#tabelaProdutos th,
+#tabelaProdutos td {
+  text-align: left;
+  padding: 14px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+#tabelaProdutos th {
+  color: var(--cor-texto-placeholder);
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+#tabelaProdutos tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ==================================================
+   ENTREGADOR
+================================================== */
 .app-container {
   width: 100vw;
   height: 100vh;
   background: var(--cor-escura);
   display: grid;
   grid-template-columns: 420px 1fr;
-  /* Lateral fixa para dados e o restante para o mapa */
   position: relative;
 }
 
-/* PAINEL LATERAL (Une a navegação e as ações do motorista) */
 .sidebar-panel {
   background: var(--cor-escura);
   border-right: 2px solid var(--cor-secundaria);
@@ -503,14 +747,12 @@ header {
   height: 100%;
 }
 
-/* Seção interna superior do painel */
 .sidebar-top {
   display: flex;
   flex-direction: column;
   gap: 25px;
 }
 
-/* 1. TOPO: Instruções de Navegação e Ganhos da Rota */
 .top-navigation-bar {
   background: var(--branco-20);
   color: var(--cor-clara);
@@ -559,7 +801,6 @@ header {
   text-align: center;
 }
 
-/* Status do Pedido */
 .status-header {
   display: flex;
   justify-content: space-between;
@@ -585,7 +826,6 @@ header {
   font-weight: 600;
 }
 
-/* Informações do Endereço de Entrega */
 .address-info {
   display: flex;
   gap: 15px;
@@ -609,6 +849,11 @@ header {
   flex-shrink: 0;
 }
 
+.address-text h3,
+.address-text p {
+  margin: 0;
+}
+
 .address-text h3 {
   font-size: var(--texto-padrao);
   color: var(--cor-clara);
@@ -620,11 +865,11 @@ header {
   color: var(--cor-texto-campo);
   line-height: 1.2;
 }
-cutout text-overflow de herança */ .address-text * {
+
+.address-text * {
   color: inherit;
 }
 
-/* Atalhos Rápidos (Ações do Motoboy) */
 .quick-actions {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -653,10 +898,9 @@ cutout text-overflow de herança */ .address-text * {
 }
 
 .btn-quick * {
-  color: inherit; /* Garante que ícones internos sigam a cor do texto do botão */
+  color: inherit;
 }
 
-/* BOTÃO PRINCIPAL: "CHEGUEI AO LOCAL" */
 .btn-primary-action {
   width: 100%;
   background: var(--cor-secundaria);
@@ -687,7 +931,6 @@ cutout text-overflow de herança */ .address-text * {
   color: inherit;
 }
 
-/* 2. ÁREA DO MAPA EM TELA CHEIA */
 .map-wrapper {
   width: 100%;
   height: 100%;
@@ -699,367 +942,4 @@ cutout text-overflow de herança */ .address-text * {
   width: 100%;
   height: 100%;
   border: 0;
-}
-
-/* ===================================================
-    RECUPERAÇÃO DE SENHA (CORRIGIDO E CENTRALIZADO)
-======================================================*/
-
-/* Ajuste para anular o comportamento do formulário de login global nesta tela */
-body:has(.container-recuperar) {
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
-
-body:has(.container-recuperar) form {
-  width: auto;
-  height: auto;
-  display: block;
-  justify-content: center;
-  align-items: center;
-}
-
-.container-recuperar {
-  background: var(--fundo-login);
-  border: var(--borda-login);
-  border-radius: 20px;
-  padding: 40px;
-  box-shadow: var(--sombra-login);
-
-  backdrop-filter: blur(var(--blur-login));
-  -webkit-backdrop-filter: blur(var(--blur-login));
-
-  width: 100%;
-  max-width: 480px;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Link Voltar */
-.voltar a {
-  color: var(--cor-texto-campo);
-  text-decoration: none;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 30px;
-  transition: var(--transition-padrao);
-}
-
-.voltar a:hover {
-  color: var(--cor-primaria);
-}
-
-/* Cabeçalho do Card */
-.cabecalho {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-#icone-cadeado {
-  font-size: 45px;
-  color: var(--cor-primaria);
-  margin-bottom: 15px;
-}
-
-.cabecalho h2 {
-  font-size: 28px;
-  font-weight: 700;
-  color: var(--cor-primaria);
-  margin-bottom: 12px;
-  line-height: var(--line-height-titulos);
-}
-
-.cabecalho p {
-  font-size: 14px;
-  color: var(--cor-texto-campo);
-  line-height: 1.5;
-}
-
-.campo-email {
-  margin-bottom: 25px;
-  width: 100%;
-}
-
-.campo-email label {
-  display: block;
-  font-size: 14px;
-  font-weight: bold;
-  color: var(--cor-primaria);
-  margin-bottom: 10px;
-}
-
-.input-com-icone {
-  display: flex;
-  align-items: center;
-  background-color: var(--fundo-campo);
-  border: var(--borda-campo);
-  border-radius: var(--radius-campo);
-  padding: var(--padding-campo);
-  gap: var(--gap-campo);
-}
-
-.input-com-icone ion-icon {
-  font-size: var(--icone-campo);
-  color: var(--cor-texto-campo);
-}
-
-.input-com-icone input {
-  background: transparent;
-  border: none;
-  outline: none;
-  width: 100%;
-  color: var(--cor-clara);
-  font-size: 16px;
-}
-
-.input-com-icone input::placeholder {
-  color: var(--cor-texto-placeholder);
-}
-
-#btn-enviar {
-  width: 100%;
-  padding: 16px;
-  background-color: var(--cor-card);
-  color: var(--cor-clara);
-  border: none;
-  border-radius: var(--radius-campo);
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: var(--sombra-botao);
-  transition: var(--transition-padrao);
-  text-transform: none;
-}
-
-#btn-enviar:hover {
-  background-color: var(--cor-secundaria-hover);
-}
-
-/* ===================================================
-
-DASHBOARD / PAINEL GERAL
-
-======================================================*/
-
-/* Container principal que junta a sidebar e o conteúdo */
-
-.container {
-  display: flex;
-
-  background-color: var(--cor-escura);
-
-  min-height: 100vh;
-}
-
-/* SIDEBAR LATERAL FIXA */
-
-.sidebar {
-  width: 240px; /* Aumentado levemente para acomodar melhor fontes estilizadas */
-
-  height: 100vh;
-
-  background-color: var(--fundo-campo); /* Fundo ultra escuro */
-
-  border-right: 1px solid var(--borda-campo);
-
-  color: var(--cor-primaria);
-
-  padding: 25px 20px;
-
-  position: fixed;
-
-  top: 0;
-
-  left: 0;
-
-  z-index: 100;
-
-  display: flex;
-
-  flex-direction: column;
-}
-
-.sidebar h2 {
-  font-size: var(--texto-padrao);
-
-  font-weight: 700;
-
-  color: var(--cor-clara);
-
-  margin-bottom: 25px;
-
-  letter-spacing: 0.5px;
-}
-
-.sidebar a {
-  display: block;
-
-  color: var(--cor-texto-campo);
-
-  text-decoration: none;
-
-  padding: 12px 15px;
-
-  border-radius: var(--radius-card);
-
-  font-size: var(--texto-pequeno);
-
-  transition: var(--transition-padrao) ease;
-
-  margin-bottom: 5px;
-}
-
-.sidebar a:hover {
-  background-color: var(--cor-card);
-
-  color: var(--cor-clara);
-}
-
-/* ÁREA DE CONTEÚDO PRINCIPAL (Fica ao lado da barra lateral) */
-
-.content {
-  margin-left: 240px; /* Alinhado exatamente com a largura da sidebar */
-
-  padding: 30px;
-
-  width: calc(100% - 240px);
-
-  min-height: 100vh;
-}
-
-/* BARRA SUPERIOR DE STATUS/BOAS-VINDAS */
-
-.topbar {
-  background: var(--fundo-login);
-
-  border: var(--borda-login);
-
-  padding: 20px;
-
-  border-radius: var(--radius-campo);
-
-  margin-bottom: 25px;
-
-  backdrop-filter: blur(var(--blur-login));
-
-  -webkit-backdrop-filter: blur(var(--blur-login));
-}
-
-/* CARDS DE INFORMAÇÕES DO PAINEL */
-
-.card {
-  background-color: var(--cor-card); /* Verde oliva profundo */
-
-  border: 1px solid rgba(255, 255, 255, 0.05);
-
-  padding: 20px;
-
-  border-radius: var(--radius-campo);
-
-  margin-bottom: 20px;
-
-  box-shadow: var(--sombra);
-}
-
-.card * {
-  color: var(--cor-clara); /* Garante contraste dentro do card escuro */
-}
-
-/* INPUTS GERAIS DO PAINEL */
-
-input {
-  width: 100%;
-
-  padding: var(--padding-campo);
-
-  margin: 10px 0;
-
-  background-color: var(--fundo-campo);
-
-  border: var(--borda-campo);
-
-  border-radius: var(--radius-campo);
-
-  color: var(--cor-clara);
-
-  font-size: var(--texto-pequeno);
-
-  outline: none;
-
-  transition: var(--transition-padrao);
-}
-
-input::placeholder {
-  color: var(--cor-texto-placeholder);
-}
-
-input:focus {
-  border-color: var(--cor-secundaria);
-}
-
-/* BOTÕES GERAIS DO PAINEL */
-
-button {
-  background-color: var(--cor-secundaria); /* Verde de destaque */
-
-  color: var(--cor-clara);
-
-  padding: 14px;
-
-  width: 100%;
-
-  border-radius: var(--radius-campo);
-
-  font-size: var(--texto-pequeno);
-
-  font-weight: bold;
-
-  cursor: pointer;
-
-  transition: var(--transition-padrao) ease;
-
-  border: none;
-
-  margin-top: 12px;
-
-  box-shadow: var(--sombra-botao);
-}
-
-button:hover {
-  background-color: var(--cor-secundaria-hover);
-
-  transform: translateY(
-    -1px
-  ); /* Efeito suave de subida em vez de escala bruta */
-}
-
-/* LISTAS (Ex: Listagem de Pedidos ou Histórico) */
-
-li {
-  background-color: var(--fundo-campo);
-
-  border: var(--borda-campo);
-
-  padding: 15px;
-
-  margin-top: 10px;
-
-  border-radius: var(--radius-card);
-
-  transition: var(--transition-padrao) ease;
-
-  color: var(--cor-texto-campo);
-
-  list-style: none; /* Remove as bolinhas padrão da lista */
-}
-
-li:hover {
-  border-color: var(--cor-secundaria);
-
-  color: var(--cor-clara);
-
-  transform: translateX(4px); /* Animação sutil para o lado ao passar o mouse */
 }
