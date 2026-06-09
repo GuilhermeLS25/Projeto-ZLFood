@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Produtos</title>
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <aside class="sidebar">
+            <h2>Sistema</h2>
+            <a href="admin.html">Dashboard</a>
+            <a href="admin.html">Cadastros</a>
+            <a href="produtos.html">Produtos</a>
+            <a href="#">Relatórios</a>
+        </aside>
+
+        <main class="content">
+
+            <header class="topbar">
+                <h1>Cadastro de Produtos</h1>
+            </header>
+
+            <section class="card">
+
+                <input type="text" id="produto" placeholder="Nome do produto">
+
+                <input type="number" id="quantidade" placeholder="Quantidade">
+
+                <input type="number" id="valor" placeholder="Valor unitário">
+
+                <button onclick="adicionarProduto()">
+                    Adicionar
+                </button>
+
+                <table id="tabelaProdutos">
+                    <thead>
+                        <tr>
+                            <th>Produto</th>
+                            <th>Qtd</th>
+                            <th>Valor</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+
+                    <tbody></tbody>
+                </table>
+
+                <button onclick="finalizarCompra()">
+                    Finalizar
+                </button>
+
+                <hr>
+
+                <h3>
+                    Total: R$
+                    <span id="total">0.00</span>
+                </h3>
+
+                <input type="number" id="descontoValor" placeholder="Desconto em R$">
+
+                <input type="number" id="descontoPercentual" placeholder="Desconto em %">
+
+                <button onclick="aplicarDesconto()">
+                    Aplicar Desconto
+                </button>
+
+                <h2>
+                    Valor Líquido:
+                    R$ <span id="valorLiquido">0.00</span>
+                </h2>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="JS/script.js"></script>
+
+</body>
+
+</html>

@@ -707,133 +707,280 @@ cutout text-overflow de herança */ .address-text * {
 
 /* Ajuste para anular o comportamento do formulário de login global nesta tela */
 body:has(.container-recuperar) {
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
 
 body:has(.container-recuperar) form {
-    width: auto;
-    height: auto;
-    display: block;
-    justify-content: center;
-    align-items: center;
+  width: auto;
+  height: auto;
+  display: block;
+  justify-content: center;
+  align-items: center;
 }
 
 .container-recuperar {
-    background: var(--fundo-login);
-    border: var(--borda-login);
-    border-radius: 20px; 
-    padding: 40px;
-    box-shadow: var(--sombra-login);
-    
-    backdrop-filter: blur(var(--blur-login));
-    -webkit-backdrop-filter: blur(var(--blur-login));
-    
-    width: 100%;
-    max-width: 480px;
-    display: flex;
-    flex-direction: column;
+  background: var(--fundo-login);
+  border: var(--borda-login);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: var(--sombra-login);
+
+  backdrop-filter: blur(var(--blur-login));
+  -webkit-backdrop-filter: blur(var(--blur-login));
+
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Link Voltar */
 .voltar a {
-    color: var(--cor-texto-campo);
-    text-decoration: none;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 30px;
-    transition: var(--transition-padrao);
+  color: var(--cor-texto-campo);
+  text-decoration: none;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 30px;
+  transition: var(--transition-padrao);
 }
 
 .voltar a:hover {
-    color: var(--cor-primaria);
+  color: var(--cor-primaria);
 }
 
 /* Cabeçalho do Card */
 .cabecalho {
-    text-align: center;
-    margin-bottom: 30px;
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 #icone-cadeado {
-    font-size: 45px;
-    color: var(--cor-primaria);
-    margin-bottom: 15px;
+  font-size: 45px;
+  color: var(--cor-primaria);
+  margin-bottom: 15px;
 }
 
 .cabecalho h2 {
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--cor-primaria);
-    margin-bottom: 12px;
-    line-height: var(--line-height-titulos);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--cor-primaria);
+  margin-bottom: 12px;
+  line-height: var(--line-height-titulos);
 }
 
 .cabecalho p {
-    font-size: 14px;
-    color: var(--cor-texto-campo);
-    line-height: 1.5;
+  font-size: 14px;
+  color: var(--cor-texto-campo);
+  line-height: 1.5;
 }
 
 .campo-email {
-    margin-bottom: 25px;
-    width: 100%;
+  margin-bottom: 25px;
+  width: 100%;
 }
 
 .campo-email label {
-    display: block;
-    font-size: 14px;
-    font-weight: bold;
-    color: var(--cor-primaria);
-    margin-bottom: 10px;
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--cor-primaria);
+  margin-bottom: 10px;
 }
 
 .input-com-icone {
-    display: flex;
-    align-items: center;
-    background-color: var(--fundo-campo);
-    border: var(--borda-campo);
-    border-radius: var(--radius-campo);
-    padding: var(--padding-campo);
-    gap: var(--gap-campo);
+  display: flex;
+  align-items: center;
+  background-color: var(--fundo-campo);
+  border: var(--borda-campo);
+  border-radius: var(--radius-campo);
+  padding: var(--padding-campo);
+  gap: var(--gap-campo);
 }
 
 .input-com-icone ion-icon {
-    font-size: var(--icone-campo);
-    color: var(--cor-texto-campo);
+  font-size: var(--icone-campo);
+  color: var(--cor-texto-campo);
 }
 
 .input-com-icone input {
-    background: transparent;
-    border: none;
-    outline: none;
-    width: 100%;
-    color: var(--cor-clara);
-    font-size: 16px;
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+  color: var(--cor-clara);
+  font-size: 16px;
 }
 
 .input-com-icone input::placeholder {
-    color: var(--cor-texto-placeholder);
+  color: var(--cor-texto-placeholder);
 }
 
 #btn-enviar {
-    width: 100%;
-    padding: 16px;
-    background-color: var(--cor-card);
-    color: var(--cor-clara);
-    border: none;
-    border-radius: var(--radius-campo);
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: var(--sombra-botao);
-    transition: var(--transition-padrao);
-    text-transform: none;
+  width: 100%;
+  padding: 16px;
+  background-color: var(--cor-card);
+  color: var(--cor-clara);
+  border: none;
+  border-radius: var(--radius-campo);
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: var(--sombra-botao);
+  transition: var(--transition-padrao);
+  text-transform: none;
 }
 
 #btn-enviar:hover {
-    background-color: var(--cor-secundaria-hover);
+  background-color: var(--cor-secundaria-hover);
+}
+
+/* ===================================================
+    DASHBOARD / PAINEL GERAL (ADAPTADO)
+======================================================*/
+
+/* Container principal que junta a sidebar e o conteúdo */
+.container {
+  display: flex;
+  background-color: var(--cor-escura);
+  min-height: 100vh;
+}
+
+/* SIDEBAR LATERAL FIXA */
+.sidebar {
+  width: 240px; /* Aumentado levemente para acomodar melhor fontes estilizadas */
+  height: 100vh;
+  background-color: var(--fundo-campo); /* Fundo ultra escuro */
+  border-right: 1px solid var(--borda-campo);
+  color: var(--cor-primaria);
+  padding: 25px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar h2 {
+  font-size: var(--texto-padrao);
+  font-weight: 700;
+  color: var(--cor-clara);
+  margin-bottom: 25px;
+  letter-spacing: 0.5px;
+}
+
+.sidebar a {
+  display: block;
+  color: var(--cor-texto-campo);
+  text-decoration: none;
+  padding: 12px 15px;
+  border-radius: var(--radius-card);
+  font-size: var(--texto-pequeno);
+  transition: var(--transition-padrao) ease;
+  margin-bottom: 5px;
+}
+
+.sidebar a:hover {
+  background-color: var(--cor-card);
+  color: var(--cor-clara);
+}
+
+/* ÁREA DE CONTEÚDO PRINCIPAL (Fica ao lado da barra lateral) */
+.content {
+  margin-left: 240px; /* Alinhado exatamente com a largura da sidebar */
+  padding: 30px;
+  width: calc(100% - 240px);
+  min-height: 100vh;
+}
+
+/* BARRA SUPERIOR DE STATUS/BOAS-VINDAS */
+.topbar {
+  background: var(--fundo-login);
+  border: var(--borda-login);
+  padding: 20px;
+  border-radius: var(--radius-campo);
+  margin-bottom: 25px;
+  backdrop-filter: blur(var(--blur-login));
+  -webkit-backdrop-filter: blur(var(--blur-login));
+}
+
+/* CARDS DE INFORMAÇÕES DO PAINEL */
+.card {
+  background-color: var(--cor-card); /* Verde oliva profundo */
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: var(--radius-campo);
+  margin-bottom: 20px;
+  box-shadow: var(--sombra);
+}
+
+.card * {
+  color: var(--cor-clara); /* Garante contraste dentro do card escuro */
+}
+
+/* INPUTS GERAIS DO PAINEL */
+input {
+  width: 100%;
+  padding: var(--padding-campo);
+  margin: 10px 0;
+  background-color: var(--fundo-campo);
+  border: var(--borda-campo);
+  border-radius: var(--radius-campo);
+  color: var(--cor-clara);
+  font-size: var(--texto-pequeno);
+  outline: none;
+  transition: var(--transition-padrao);
+}
+
+input::placeholder {
+  color: var(--cor-texto-placeholder);
+}
+
+input:focus {
+  border-color: var(--cor-secundaria);
+}
+
+/* BOTÕES GERAIS DO PAINEL */
+button {
+  background-color: var(--cor-secundaria); /* Verde de destaque */
+  color: var(--cor-clara);
+  padding: 14px;
+  width: 100%;
+  border-radius: var(--radius-campo);
+  font-size: var(--texto-pequeno);
+  font-weight: bold;
+  cursor: pointer;
+  transition: var(--transition-padrao) ease;
+  border: none;
+  margin-top: 12px;
+  box-shadow: var(--sombra-botao);
+}
+
+button:hover {
+  background-color: var(--cor-secundaria-hover);
+  transform: translateY(
+    -1px
+  ); /* Efeito suave de subida em vez de escala bruta */
+}
+
+/* LISTAS (Ex: Listagem de Pedidos ou Histórico) */
+li {
+  background-color: var(--fundo-campo);
+  border: var(--borda-campo);
+  padding: 15px;
+  margin-top: 10px;
+  border-radius: var(--radius-card);
+  transition: var(--transition-padrao) ease;
+  color: var(--cor-texto-campo);
+  list-style: none; /* Remove as bolinhas padrão da lista */
+}
+
+li:hover {
+  border-color: var(--cor-secundaria);
+  color: var(--cor-clara);
+  transform: translateX(4px); /* Animação sutil para o lado ao passar o mouse */
 }
