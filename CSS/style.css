@@ -839,7 +839,7 @@ body:has(.container-recuperar) form {
 }
 
 /* ===================================================
-    DASHBOARD / PAINEL GERAL (ADAPTADO)
+    DASHBOARD / PAINEL GERAL 
 ======================================================*/
 
 /* Container principal que junta a sidebar e o conteúdo */
@@ -984,3 +984,4 @@ li:hover {
   color: var(--cor-clara);
   transform: translateX(4px); /* Animação sutil para o lado ao passar o mouse */
 }
+
