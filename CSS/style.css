@@ -1,0 +1,839 @@
+/* ==================================================
+   ROOT - VARIÁVEIS GLOBAIS
+================================================== */
+
+:root {
+  /* Cores */
+  --cor-primaria: #8bae66;
+  --cor-secundaria: #628141;
+  --cor-secundaria-hover: #557337;
+  --cor-card: #4c6631;
+
+  --cor-escura: #1b211a;
+  --cor-clara: #ffffff;
+
+  --cor-texto-campo: #8a8d85;
+  --cor-texto-placeholder: #6a6d65;
+  --cor-label: #7b9c3e;
+
+  --branco-50: rgba(255, 255, 255, 0.3);
+  --branco-20: rgba(255, 255, 255, 0.2);
+
+  /* Backgrounds */
+  --imagem-fundo: url("../IMG/oik.png");
+  --fundo-login: rgba(26, 34, 18, 0.3);
+  --fundo-campo: #11140e;
+
+  /* Bordas */
+  --borda-campo: 1px solid #4a4d46;
+  --borda-card-radio: 2px solid var(--cor-clara);
+  --borda-login: 1px solid var(--branco-20);
+
+  /* Raios */
+  --radius-geral: 20px;
+  --radius-campo: 15px;
+  --radius-card: 12px;
+  --radius-login: 30px 0 0 30px;
+  --radius-circulo: 50%;
+
+  /* Sombras */
+  --sombra: 0px 8px 30px rgba(0, 0, 0, 0.2);
+  --sombra-login: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --sombra-botao: 0 4px 6px rgba(0, 0, 0, 0.2);
+
+  /* Fontes */
+  --fonte-principal: "Kadwa", serif;
+
+  /* Tamanhos */
+  --texto-padrao: 20px;
+  --texto-pequeno: 16px;
+  --texto-grande: 36px;
+
+  --titulo-principal: 60px;
+  --titulo-secundario: 50px;
+
+  --icone-campo: 30px;
+  --icone-card: 50px;
+
+  /* Espaçamentos */
+  --padding-header: 20px 8%;
+  --padding-login: 50px;
+  --padding-card: 15px;
+  --padding-campo: 16px 20px;
+
+  --gap-campo: 12px;
+  --gap-cards: 15px;
+
+  /* Layout */
+  --largura-form: 700px;
+  --altura-divisoria: 150px;
+  --line-height-titulos: 1.2;
+
+  /* Efeitos */
+  --blur-login: 5px;
+  --transition-padrao: 0.2s;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    /* Cores - Invertidas para garantir legibilidade no escuro */
+    --cor-primaria: #e2e9de; /* Texto principal (passou de verde médio para um off-white confortável) */
+    --cor-secundaria: #8bae66; /* Verde de destaque (antiga cor primária) */
+    --cor-secundaria-hover: #a3c983; /* Verde mais claro/vivo para o efeito hover */
+    --cor-card: #222d1a; /* Fundo do card (verde oliva bem profundo) */
+
+    --cor-escura: #0d120a; /* Base ultra escura */
+    --cor-clara: #ffffff; /* Mantido para realces brancos absolutos */
+
+    --cor-texto-campo: #ced4ca; /* Texto digitado nos inputs (mais claro) */
+    --cor-texto-placeholder: #687261; /* Placeholder sutil no escuro */
+    --cor-label: #a6c875; /* Labels em um verde claro bem visível */
+
+    --branco-50: rgba(
+      255,
+      255,
+      255,
+      0.15
+    ); /* Opacidades reduzidas para não estourarem no fundo escuro */
+    --branco-20: rgba(255, 255, 255, 0.05);
+
+    /* Backgrounds */
+    --imagem-fundo: url("../IMG/light.png"); /* Dica: se tiver uma versão dark da imagem, mude o nome aqui */
+    --fundo-login: rgba(
+      14,
+      18,
+      11,
+      0.75
+    ); /* Glassmorphism mais escuro e denso para dar contraste */
+    --fundo-campo: #090d07; /* Fundo dos inputs quase preto */
+
+    /* Sombras - Mais intensas/escuras, pois fundos escuros absorvem sombra */
+    --sombra: 0px 8px 30px rgba(0, 0, 0, 0.5);
+    --sombra-login: 0 8px 32px rgba(0, 0, 0, 0.7);
+    --sombra-botao: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* ==================================================
+   RESET
+================================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--fonte-principal);
+  font-weight: 400;
+  font-style: normal;
+  color: var(--cor-primaria);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ==================================================
+   BODY
+================================================== */
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+
+  background-image: var(--imagem-fundo);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+form {
+  width: var(--largura-form);
+  height: 100vh;
+}
+
+/* ==================================================
+   HEADER
+================================================== */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: var(--padding-header);
+}
+
+.logo-container {
+  flex: 0 0 300px;
+  text-align: right;
+  padding-right: 30px;
+}
+
+.logo-container img {
+  max-width: 100%;
+  height: auto;
+}
+
+.divisoria {
+  width: 1px;
+  height: var(--altura-divisoria);
+  background-color: var(--cor-secundaria);
+  margin: 0 10px;
+}
+
+.divisor {
+  width: 100%;
+  height: 1px;
+  background-color: var(--branco-50);
+  margin: 10px;
+}
+
+/* ==================================================
+   MENSAGENS
+================================================== */
+
+.mensagem,
+.conta {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-left: 30px;
+  margin-bottom: 50px;
+}
+
+.conta {
+  align-items: center;
+  text-align: center;
+}
+
+.bemVindo {
+  font-size: var(--titulo-principal);
+  font-weight: 700;
+  line-height: var(--line-height-titulos);
+}
+
+.deVolta {
+  font-size: var(--titulo-secundario);
+  color: var(--cor-secundaria);
+  line-height: var(--line-height-titulos);
+}
+
+#dados {
+  color: var(--branco-50);
+}
+
+#acesseConta {
+  font-weight: 700;
+}
+
+/* ==================================================
+   LOGIN (PAI)
+================================================== */
+
+.login {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+
+  padding: var(--padding-login);
+
+  background: var(--fundo-login);
+  border-left: var(--borda-login);
+  border-radius: var(--radius-login);
+
+  box-shadow: var(--sombra-login);
+
+  backdrop-filter: blur(var(--blur-login));
+  -webkit-backdrop-filter: blur(var(--blur-login));
+}
+
+#home {
+  font-size: 100px;
+}
+
+#esqueciSenha {
+  text-align: right;
+}
+
+/* ==================================================
+   CAMPOS DE EMAIL E SENHA. (FILHOS)
+================================================== */
+
+.email,
+.senha {
+  display: flex;
+  align-items: center;
+
+  background-color: var(--fundo-campo);
+  border: var(--borda-campo);
+  border-radius: var(--radius-campo);
+
+  padding: var(--padding-campo);
+  gap: var(--gap-campo);
+  margin-top: 1px;
+
+  font-size: var(--texto-padrao);
+
+  padding: 9px;
+}
+
+.email ion-icon,
+.senha ion-icon {
+  color: var(--cor-texto-campo);
+  font-size: var(--icone-campo);
+}
+
+.email input,
+.senha input {
+  width: 100%;
+  flex: 1;
+
+  background: transparent;
+  border: none;
+  outline: none;
+
+  color: var(--cor-texto-campo);
+  font-size: var(--texto-padrao);
+}
+
+.email input::placeholder,
+.senha input::placeholder {
+  color: var(--cor-texto-placeholder);
+}
+
+.email-label,
+.senha-label {
+  display: block;
+  font-size: var(--texto-padrao);
+  font-weight: bold;
+  color: var(--cor-primaria);
+}
+
+#esqueciSenha a {
+  text-decoration: none;
+  font-size: var(--texto-pequeno);
+}
+
+/* ==================================================
+   PERFIL
+================================================== */
+
+#perfil {
+  border: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+#perfil legend {
+  color: var(--cor-primaria);
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: var(--texto-padrao);
+  margin-top: 12px;
+}
+
+.opcoes-perfil {
+  display: flex;
+  gap: var(--gap-cards);
+}
+
+/* ==================================================
+   CARD PERFIL
+================================================== */
+
+.card-perfil {
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+
+  position: relative;
+  cursor: pointer;
+
+  padding: var(--padding-card);
+
+  background-color: var(--cor-card);
+  border-radius: var(--radius-card);
+
+  transition: var(--transition-padrao);
+}
+
+.card-perfil:hover {
+  background-color: var(--cor-secundaria-hover);
+}
+
+.icone-card {
+  font-size: var(--icone-card);
+  color: var(--cor-clara);
+  margin-right: 12px;
+}
+
+.texto-card {
+  display: flex;
+  flex-direction: column;
+  color: var(--cor-clara);
+}
+
+.texto-card strong {
+  font-size: var(--texto-padrao);
+  font-weight: bold;
+  color: white;
+}
+
+.texto-card span {
+  font-size: var(--texto-pequeno);
+  opacity: 0.8;
+  color: white;
+}
+
+.card-perfil ion-icon {
+  font-size: var(--icone-card);
+}
+
+/* ==================================================
+   APARENCIA DO SELETOR
+================================================== */
+
+.card-perfil input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.custom-radio {
+  position: absolute;
+  right: 15px;
+
+  width: 18px;
+  height: 18px;
+
+  border: var(--borda-card-radio);
+  border-radius: var(--radius-circulo);
+}
+
+.card-perfil input[type="radio"]:checked ~ .custom-radio::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+
+  width: 8px;
+  height: 8px;
+
+  background: var(--cor-clara);
+  border-radius: var(--radius-circulo);
+}
+
+/* ==================================================
+   BOTÃO ENTRAR
+================================================== */
+
+#entrar button {
+  width: 100%;
+
+  padding: 1px;
+
+  border: none;
+  border-radius: var(--radius-campo);
+
+  background-color: var(--cor-card);
+  color: var(--cor-clara);
+
+  font-size: var(--texto-grande);
+  font-weight: bold;
+
+  cursor: pointer;
+
+  box-shadow: var(--sombra-botao);
+  transition: var(--transition-padrao);
+
+  margin-bottom: 12px;
+}
+
+#entrar button:hover {
+  background-color: var(--cor-secundaria-hover);
+}
+
+#cadastrar a {
+  text-decoration: none;
+  font-size: var(--texto-pequeno);
+}
+
+#cadastrar p {
+  color: var(--cor-card);
+  font-size: var(--texto-pequeno);
+}
+
+/* ===================================================
+    ENTREGADOR
+======================================================*/
+
+/* Container do App adaptado para Desktop (Layout Split de Tela Cheia) */
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  background: var(--cor-escura);
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  /* Lateral fixa para dados e o restante para o mapa */
+  position: relative;
+}
+
+/* PAINEL LATERAL (Une a navegação e as ações do motorista) */
+.sidebar-panel {
+  background: var(--cor-escura);
+  border-right: 2px solid var(--cor-secundaria);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 25px;
+  z-index: 10;
+  box-shadow: var(--sombra-login);
+  height: 100%;
+}
+
+/* Seção interna superior do painel */
+.sidebar-top {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* 1. TOPO: Instruções de Navegação e Ganhos da Rota */
+.top-navigation-bar {
+  background: var(--branco-20);
+  color: var(--cor-clara);
+  padding: 20px;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border: 1px solid var(--branco-50);
+}
+
+.nav-instruction {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.nav-icon-turn {
+  font-size: 2rem;
+  color: var(--cor-primaria);
+}
+
+.nav-text p {
+  font-size: var(--texto-pequeno);
+  color: var(--cor-texto-campo);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
+}
+
+.nav-text h4 {
+  font-size: var(--texto-padrao);
+  font-weight: 600;
+  color: var(--cor-clara);
+  line-height: var(--line-height-titulos);
+}
+
+.earning-badge {
+  background: var(--cor-secundaria);
+  color: var(--cor-clara);
+  padding: 10px;
+  border-radius: var(--radius-card);
+  font-weight: 700;
+  font-size: var(--texto-padrao);
+  border: 1px solid var(--cor-primaria);
+  text-align: center;
+}
+
+/* Status do Pedido */
+.status-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--branco-50);
+  padding-bottom: 15px;
+}
+
+.status-badge {
+  background: var(--cor-secundaria);
+  color: var(--cor-clara);
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: var(--texto-pequeno);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.order-number {
+  font-size: var(--texto-padrao);
+  color: var(--cor-primaria);
+  font-weight: 600;
+}
+
+/* Informações do Endereço de Entrega */
+.address-info {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  background: var(--fundo-login);
+  padding: 15px;
+  border-radius: 14px;
+  border: var(--borda-login);
+}
+
+.address-icon {
+  background: var(--cor-secundaria);
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-circulo);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cor-clara);
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.address-text h3 {
+  font-size: var(--texto-padrao);
+  color: var(--cor-clara);
+  margin-bottom: 4px;
+}
+
+.address-text p {
+  font-size: var(--texto-pequeno);
+  color: var(--cor-texto-campo);
+  line-height: 1.2;
+}
+cutout text-overflow de herança */ .address-text * {
+  color: inherit;
+}
+
+/* Atalhos Rápidos (Ações do Motoboy) */
+.quick-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.btn-quick {
+  background: var(--fundo-login);
+  border: 1px solid var(--cor-secundaria);
+  padding: 14px;
+  border-radius: var(--radius-card);
+  color: var(--cor-primaria);
+  font-weight: 600;
+  font-size: var(--texto-pequeno);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all var(--transition-padrao) ease;
+}
+
+.btn-quick:hover {
+  background: var(--cor-secundaria);
+  color: var(--cor-clara);
+}
+
+.btn-quick * {
+  color: inherit; /* Garante que ícones internos sigam a cor do texto do botão */
+}
+
+/* BOTÃO PRINCIPAL: "CHEGUEI AO LOCAL" */
+.btn-primary-action {
+  width: 100%;
+  background: var(--cor-secundaria);
+  color: var(--cor-clara);
+  border: 1px solid var(--cor-primaria);
+  padding: 18px;
+  border-radius: var(--radius-campo);
+  font-size: var(--texto-padrao);
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--sombra-botao);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all var(--transition-padrao) ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 20px;
+}
+
+.btn-primary-action:hover {
+  background: var(--cor-secundaria-hover);
+  box-shadow: var(--sombra);
+}
+
+.btn-primary-action * {
+  color: inherit;
+}
+
+/* 2. ÁREA DO MAPA EM TELA CHEIA */
+.map-wrapper {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: var(--fundo-campo);
+}
+
+.map-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* ===================================================
+    RECUPERAÇÃO DE SENHA (CORRIGIDO E CENTRALIZADO)
+======================================================*/
+
+/* Ajuste para anular o comportamento do formulário de login global nesta tela */
+body:has(.container-recuperar) {
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+body:has(.container-recuperar) form {
+    width: auto;
+    height: auto;
+    display: block;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-recuperar {
+    background: var(--fundo-login);
+    border: var(--borda-login);
+    border-radius: 20px; 
+    padding: 40px;
+    box-shadow: var(--sombra-login);
+    
+    backdrop-filter: blur(var(--blur-login));
+    -webkit-backdrop-filter: blur(var(--blur-login));
+    
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Link Voltar */
+.voltar a {
+    color: var(--cor-texto-campo);
+    text-decoration: none;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 30px;
+    transition: var(--transition-padrao);
+}
+
+.voltar a:hover {
+    color: var(--cor-primaria);
+}
+
+/* Cabeçalho do Card */
+.cabecalho {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#icone-cadeado {
+    font-size: 45px;
+    color: var(--cor-primaria);
+    margin-bottom: 15px;
+}
+
+.cabecalho h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--cor-primaria);
+    margin-bottom: 12px;
+    line-height: var(--line-height-titulos);
+}
+
+.cabecalho p {
+    font-size: 14px;
+    color: var(--cor-texto-campo);
+    line-height: 1.5;
+}
+
+.campo-email {
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+.campo-email label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--cor-primaria);
+    margin-bottom: 10px;
+}
+
+.input-com-icone {
+    display: flex;
+    align-items: center;
+    background-color: var(--fundo-campo);
+    border: var(--borda-campo);
+    border-radius: var(--radius-campo);
+    padding: var(--padding-campo);
+    gap: var(--gap-campo);
+}
+
+.input-com-icone ion-icon {
+    font-size: var(--icone-campo);
+    color: var(--cor-texto-campo);
+}
+
+.input-com-icone input {
+    background: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+    color: var(--cor-clara);
+    font-size: 16px;
+}
+
+.input-com-icone input::placeholder {
+    color: var(--cor-texto-placeholder);
+}
+
+#btn-enviar {
+    width: 100%;
+    padding: 16px;
+    background-color: var(--cor-card);
+    color: var(--cor-clara);
+    border: none;
+    border-radius: var(--radius-campo);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: var(--sombra-botao);
+    transition: var(--transition-padrao);
+    text-transform: none;
+}
+
+#btn-enviar:hover {
+    background-color: var(--cor-secundaria-hover);
+}

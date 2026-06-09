@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZL Food - Portal Motoboy (Tela 12: Rota Inteligente - Desktop)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- Painel Lateral Unificado para Desktop -->
+        <div class="sidebar-panel">
+
+            <div class="sidebar-top">
+                <!-- Caixa de Navegação Base -->
+                <div class="top-navigation-bar">
+                    <div class="nav-instruction">
+                        <div class="nav-icon-turn">
+                            <i class="fa-solid fa-arrow-turn-up"></i>
+                        </div>
+                        <div class="nav-text">
+                            <p>A 300 metros</p>
+                            <h4>Vire à esquerda na Av. Principal</h4>
+                        </div>
+                    </div>
+                    <div class="earning-badge">
+                        Valor da Rota: R$ 14,50
+                    </div>
+                </div>
+
+                <!-- Status e Identificação -->
+                <div class="status-header">
+                    <span class="status-badge">A Caminho</span>
+                    <span class="order-number">Pedido #8841</span>
+                </div>
+
+                <!-- Informações de Localização -->
+                <div class="address-info">
+                    <div class="address-icon">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <div class="address-text">
+                        <h3>Ponto da Pizza (Origem)</h3>
+                        <p>Av. Antônio Prado Lyra, 605 - Vila Assis</p>
+                    </div>
+                </div>
+
+                <!-- Comunicação e Suporte -->
+                <div class="quick-actions">
+                    <button class="btn-quick" onclick="alert('Ligando para o estabelecimento/suporte...')">
+                        <i class="fa-solid fa-phone"></i> Ligar
+                    </button>
+                    <button class="btn-quick" onclick="alert('Abrindo chat interno do ZL Food...')">
+                        <i class="fa-solid fa-comment"></i> Chat (2)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Ação Principal Inferior -->
+            <button class="btn-primary-action"
+                onclick="alert('Gatilho JavaScript acionado: Direcionando para a Tela 13 (Scanner de Segurança) para ativação da câmera.')">
+                CHEGUEI AO LOCAL
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+        </div>
+
+        <!-- Mapa que toma todo o restante da tela à direita -->
+        <div class="map-wrapper">
+            <iframe
+                src="https://www.google.com/maps/d/u/1/embed?mid=1uiDwkYZ9-nQNwFieEKEQEn62XLI4m60&ehbc=2E312F&noprof=1"></iframe>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
