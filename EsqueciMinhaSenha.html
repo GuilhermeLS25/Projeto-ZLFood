@@ -12,14 +12,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
     <!-- Link para o arquivo de estilo que vamos criar -->
-    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
 
     <main>
         <div class="container-recuperar">
-            
+
             <!-- Voltar para o Login -->
             <div class="voltar">
                 <a href="index.html">
@@ -50,23 +50,9 @@
     </main>
 
     <!-- Script dos Ícones (Igual ao seu) -->
+    <script src="assets/js/app.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
-    <!-- JavaScript Simples para avisar o usuário -->
-    <script>
-        var formulario = document.getElementById("form-recuperar");
-        
-        formulario.onsubmit = function(evento) {
-            // evento.preventDefault();
-            
-            var email = document.getElementById("email").value;
-            
-            alert("Enviamos um link de recuperação para o e-mail: " + email);
-            
-            window.location.href = "index.html";
-        }
-    </script>
 
 </body>
 

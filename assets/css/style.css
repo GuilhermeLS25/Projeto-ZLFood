@@ -20,7 +20,7 @@
   --branco-20: rgba(255, 255, 255, 0.2);
 
   /* Backgrounds */
-  --imagem-fundo: url("../IMG/oik.png");
+  --imagem-fundo: url("../images/fundo-dark.png");
   --fundo-login: rgba(26, 34, 18, 0.3);
   --fundo-campo: #11140e;
 
@@ -98,7 +98,7 @@
     --branco-20: rgba(255, 255, 255, 0.05);
 
     /* Backgrounds */
-    --imagem-fundo: url("../IMG/light.png"); /* Dica: se tiver uma versão dark da imagem, mude o nome aqui */
+    --imagem-fundo: url("../images/light.png"); /* Dica: se tiver uma versão dark da imagem, mude o nome aqui */
     --fundo-login: rgba(
       14,
       18,

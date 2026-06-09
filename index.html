@@ -1,49 +1,92 @@
-<!doctype html>
-<html lang="pt-br">
+<!DOCTYPE html>
+<html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mini Sistema</title>
-  <link rel="stylesheet" href="CSS/style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZL Food | Gestão para Restaurantes</title>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+  <link rel="manifest" href="assets/images/site.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Kadwa:wght@400;700&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
-  <div class="container">
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
-      <h2>Sistema</h2>
-      <a href="index.html">Dashboard</a>
-      <a href="index.html">Cadastros</a>
-      <a href="produtos.html">Produtos</a>
-      <a href="#">Relatórios</a>
-    </aside>
 
-    <!-- CONTEÚDO -->
-    <main class="content">
-      <header class="topbar">
-        <h1>Cadastro de Usuários</h1>
-      </header>
+  <header class="header-main">
+    <div class="logo-container">
+      <img src="assets/images/Logo.png" alt="ZL FOOD Logo">
+    </div>
 
-      <!-- FORMULARIO DE CADASTRO -->
-      <section class="card">
-        <form onsubmit="cadastrar(event)">
-          <input type="text" id="nome" placeholder="Digite seu nome..." />
-          <input type="email" id="email" placeholder="Digite seu email.." />
-          <button type="submit">Cadastrar</button>
-        </form>
-      </section>
+    <div class="divisoria"></div>
 
-      <!-- LISTA DE USUARIOS CADASTRADOS -->
-      <section class="card">
-        <h2>Usuários Cadastrados</h2>
-        <ul id="lista">
-        </ul>
-      </section>
-    </main>
-  </div>
+    <div class="mensagem">
+      <h1 class="bemVindo">Bem-Vindo</h1>
+      <p class="deVolta">de volta !</p>
+    </div>
+  </header>
 
-  <script src="JS/script.js"></script>
+  <main>
+    <form id="login-form" action="#" method="POST">
+      <div class="login">
+
+
+        <div class="campos">
+          <div class="conta">
+            <ion-icon id="home" name="storefront"></ion-icon>
+            <h2 id="acesseConta">Acesse sua Conta</h2>
+            <p id="dados">Preencha seus dados para entrar no sistema</p>
+          </div>
+
+          <label class="email-label">E-Mail</label>
+          <div class="email">
+            <ion-icon name="mail"></ion-icon>
+            <input id="email-login" class="email" placeholder="Digite seu e-mail" type="email" required>
+          </div>
+
+          <label class="senha-label">Senha</label>
+          <div class="senha">
+            <ion-icon name="lock-closed"></ion-icon>
+            <input id="senha-login" class="senha" placeholder="Digite sua senha" type="password" required>
+          </div>
+
+          <div id="esqueciSenha">
+            <a href="./EsqueciMinhaSenha.html">Esqueci minha senha</a>
+          </div>
+
+        </div>
+
+        <div class="divisor"></div>
+
+        <div id="entrar">
+          <button type="submit" id="btn-entrar">Entrar</button>
+        </div>
+
+        <div class="divisor"></div>
+
+        <div id="cadastrar">
+          <p>Ainda não tem conta?
+            <a href="cadastro.html">Cadastre-se agora!</a>
+
+          </p>
+        </div>
+      </div>
+    </form>
+  </main>
+
+  <script src="assets/js/app.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
 </body>
 
 </html>

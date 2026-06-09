@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Produtos</title>
-    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
@@ -27,15 +27,14 @@
 
             <section class="card">
 
-                <input type="text" id="produto" placeholder="Nome do produto">
-
-                <input type="number" id="quantidade" placeholder="Quantidade">
-
-                <input type="number" id="valor" placeholder="Valor unitário">
-
-                <button onclick="adicionarProduto()">
-                    Adicionar
-                </button>
+                <form id="produto-form">
+                    <input type="text" id="produto" placeholder="Nome do produto">
+                    <input type="number" id="quantidade" placeholder="Quantidade">
+                    <input type="number" id="valor" placeholder="Valor unitário">
+                    <button type="submit">
+                        Adicionar
+                    </button>
+                </form>
 
                 <table id="tabelaProdutos">
                     <thead>
@@ -50,7 +49,7 @@
                     <tbody></tbody>
                 </table>
 
-                <button onclick="finalizarCompra()">
+                <button id="btn-finalizar" type="button">
                     Finalizar
                 </button>
 
@@ -65,7 +64,7 @@
 
                 <input type="number" id="descontoPercentual" placeholder="Desconto em %">
 
-                <button onclick="aplicarDesconto()">
+                <button id="btn-aplicar-desconto" type="button">
                     Aplicar Desconto
                 </button>
 
@@ -80,7 +79,7 @@
 
     </div>
 
-    <script src="JS/script.js"></script>
+    <script src="assets/js/app.js"></script>
 
 </body>
 
