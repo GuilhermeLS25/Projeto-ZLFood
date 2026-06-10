@@ -13,53 +13,59 @@
 </head>
 
 <body>
-
     <div class="container">
-
         <aside class="sidebar">
             <h2>Sistema</h2>
-            <a href="dashboard.html">Dashboard</a>
-            <a href="cadastro-moto.html">Cadastros</a>
-            <a href="cadastro-produtos.html">Produtos</a>
-            <a href="#">Cardapio</a>
+            <div>
+                <i class="fa-solid fa-chart-column"></i>
+                <a href="dashboard.html">Dashboard</a>
+            </div>
+
+            <div>
+                <i class="fa-solid fa-user-tie"></i>
+                <a href="cadastro-moto.html">Cadastros</a>
+            </div>
+
+            <div>
+                <i class="fa-solid fa-burger"></i>
+                <a href="cadastro-produtos.html">Produtos</a>
+            </div>
+
+            <div>
+                <i class="fa-solid fa-book-open"></i>
+                <a href="cardapio-admin.html">Cardapio</a>
+            </div>
         </aside>
-
         <main class="content">
-
             <header class="topbar">
                 <h1>Cadastro de Produtos</h1>
             </header>
-
             <section class="card">
-
                 <form id="produto-form">
                     <input type="text" id="produto" placeholder="Nome do produto">
-                    <input type="number" id="quantidade" placeholder="Quantidade">
-                    <input type="number" id="valor" placeholder="Valor unitário">
+                    <input type="text" id="descricao" placeholder="Descrição">
+                    <input type="number" id="valor" placeholder="Preço">
+                    <label for="imagem" class="label-imagem">Selecionar Imagem</label>
+                    <input type="file" id="imagem" accept="image/*">
                     <button type="submit">
                         Adicionar
                     </button>
                 </form>
-
                 <table id="tabelaProdutos">
                     <thead>
                         <tr>
                             <th>Produto</th>
-                            <th>Qtd</th>
+                            <th>Descrição</th>
                             <th>Valor</th>
-                            <th>Total</th>
+                            <th>Imagem</th>
+                            <th>Ações</th>
                         </tr>
                     </thead>
-
                     <tbody></tbody>
                 </table>
-
             </section>
-
         </main>
-
     </div>
-
     <script src="assets/js/app.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

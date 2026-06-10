@@ -134,7 +134,7 @@ body {
 .sidebar {
   width: 220px;
   height: 100dvh;
-  background-color: #e30613;
+  background-color: var(--cor-card);
   color: white;
   padding: 20px;
   position: fixed;
@@ -154,7 +154,7 @@ body {
 }
 
 .sidebar a:hover {
-  background-color: #9a1915;
+  background-color: var(--cor-label);
 }
 
 .content {
@@ -186,8 +186,8 @@ input {
 }
 
 button {
-  background-color: #e30613;
-  color: aliceblue;
+  background-color: var(--cor-card);
+  color: var(--cor-clara);
   padding: 10px;
   width: 100%;
   border-radius: 6px;
@@ -198,22 +198,8 @@ button {
 }
 
 button:hover {
-  background-color: #9a1915;
+  background-color: var(--cor-label);
   transform: scale(1.01);
-}
-
-li {
-  background-color: #e30613;
-  padding: 10px;
-  margin-top: 8px;
-  border-radius: 6px;
-  transition: 0.3s;
-  color: #dfdfdf;
-}
-
-li:hover {
-  background-color: #9a1915;
-  transform: scale(1.005);
 }
 
 body.page-recover {
@@ -247,6 +233,43 @@ input {
 
 input::placeholder {
   font-family: var(--fonte-principal);
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.label-imagem {
+  display: block;
+  width: 100%;
+  padding: 14px 16px;
+  margin: 8px 0;
+  border: 2px dashed var(--cor-primaria);
+  border-radius: var(--radius-campo);
+  background: linear-gradient(
+    135deg,
+    rgba(139, 174, 102, 0.1) 0%,
+    rgba(98, 129, 65, 0.05) 100%
+  );
+  color: var(--cor-primaria);
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-padrao);
+  font-family: var(--fonte-principal);
+  user-select: none;
+}
+
+.label-imagem:hover {
+  border-color: var(--cor-secundaria);
+  background: linear-gradient(
+    135deg,
+    rgba(139, 174, 102, 0.2) 0%,
+    rgba(98, 129, 65, 0.1) 100%
+  );
+  color: var(--cor-secundaria);
+  transform: translateY(-2px);
 }
 
 hr {
@@ -335,7 +358,8 @@ header.header-main {
 }
 
 #acesseConta {
-  font-weight: 700;
+  font-size: 30px;
+  margin-bottom: -5px;
 }
 
 .login {
@@ -895,28 +919,72 @@ header.header-main {
   color: inherit;
 }
 
-#tabelaMotoboys {
+#tabelaMotoboys,
+#tabelaProdutos {
   width: 100%;
   border-collapse: collapse;
   margin: 24px 0;
 }
 
 #tabelaMotoboys th,
-#tabelaMotoboys td {
+#tabelaMotoboys td,
+#tabelaProdutos th,
+#tabelaProdutos td {
   text-align: left;
   padding: 14px 12px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-#tabelaMotoboys th {
+#tabelaMotoboys th,
+#tabelaProdutos th {
   color: var(--cor-texto-placeholder);
   font-size: 14px;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
-#tabelaMotoboys tbody tr:last-child td {
+#tabelaMotoboys tbody tr:last-child td,
+#tabelaProdutos tbody tr:last-child td {
   border-bottom: none;
+}
+
+.btn-editar,
+.btn-excluir {
+  padding: 6px 12px;
+  margin: 0 6px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all var(--transition-padrao);
+}
+
+.btn-editar {
+  background-color: var(--cor-primaria);
+  color: var(--cor-escura);
+}
+
+.btn-editar:hover {
+  background-color: var(--cor-secundaria);
+  color: var(--cor-clara);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-excluir {
+  background-color: var(--cor-card);
+  color: var(--cor-clara);
+}
+
+.btn-excluir:hover {
+  background-color: var(--cor-label);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .map-wrapper {

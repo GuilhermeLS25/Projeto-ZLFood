@@ -4,6 +4,14 @@ const state = {
   motoboys: [],
 };
 
+const getStoredUsers = () => {
+  return JSON.parse(localStorage.getItem("usuarios") || "[]");
+};
+
+const saveStoredUsers = (users) => {
+  localStorage.setItem("usuarios", JSON.stringify(users));
+};
+
 const formatCurrency = (value) => {
   return value.toFixed(2).replace(".", ",");
 };
@@ -19,6 +27,24 @@ const logar = (event) => {
 
   if (!email || !senha) {
     alert("Preencha o e-mail e a senha para entrar.");
+    return;
+  }
+
+  const usuarios = getStoredUsers();
+  const usuario = usuarios.find((u) => u.email === email);
+
+  if (usuario) {
+    if (usuario.senha !== senha) {
+      alert("Senha incorreta. Tente novamente!");
+      return;
+    }
+
+    alert("Login realizado com sucesso! Redirecionando...");
+    if (usuario.perfil === "entregador") {
+      window.location.href = "portal-entregador.html";
+    } else {
+      window.location.href = "painel-cliente.html";
+    }
     return;
   }
 
@@ -38,6 +64,9 @@ const cadastrar = (event) => {
   const emailCampo = document.getElementById("email");
   const senhaCampo = document.getElementById("senha");
   const confirmeSenhaCampo = document.getElementById("confirme-senha");
+  const perfilSelecionado = document.querySelector(
+    'input[name="perfil"]:checked',
+  )?.value;
 
   const nome = nomeCampo?.value.trim();
   const email = emailCampo?.value.trim();
@@ -64,6 +93,17 @@ const cadastrar = (event) => {
     return;
   }
 
+  const perfil = perfilSelecionado || "cliente";
+  const usuarios = getStoredUsers();
+
+  if (usuarios.some((u) => u.email === email)) {
+    alert("Já existe uma conta cadastrada com este e-mail.");
+    return;
+  }
+
+  usuarios.push({ nome, email, senha, perfil });
+  saveStoredUsers(usuarios);
+
   alert(`Sua Conta foi criada com sucesso!! Redirecionando...`);
   window.location.href = "index.html";
 };
@@ -86,7 +126,7 @@ const cadastrarMoto = (event) => {
     return;
   }
 
-  state.motoboys.push({ nome, telefone, placa, modelo });
+  state.motoboys.push({ id: Date.now(), nome, telefone, placa, modelo });
   atualizarTabelaMotoboys();
 
   alert("Motoboy cadastrado com sucesso!");
@@ -96,6 +136,7 @@ const cadastrarMoto = (event) => {
   modeloCampo.value = "";
 };
 
+// Função para atualizar a tabela de motoboys
 const atualizarTabelaMotoboys = () => {
   const tbody = document.querySelector("#tabelaMotoboys tbody");
   if (!tbody) return;
@@ -108,113 +149,156 @@ const atualizarTabelaMotoboys = () => {
         <td>${motoboy.telefone}</td>
         <td>${motoboy.placa}</td>
         <td>${motoboy.modelo}</td>
+        <td>
+          <button class="btn-editar" onclick="editarMotoboy(${motoboy.id})">✎ Editar</button>
+          <button class="btn-excluir" onclick="excluirMotoboy(${motoboy.id})">✕ Excluir</button>
+        </td>
       </tr>
     `;
   });
 };
 
-const adicionarProduto = () => {
-  const nome = document.getElementById("produto")?.value.trim();
-  const qtd = parseInt(document.getElementById("quantidade")?.value, 10);
-  const valor = parseFloat(
-    document.getElementById("valor")?.value.replace(",", "."),
-  );
+// Função para excluir motoboy
+const excluirMotoboy = (id) => {
+  if (confirm("Tem certeza que deseja excluir este motoboy?")) {
+    state.motoboys = state.motoboys.filter((motoboy) => motoboy.id !== id);
+    atualizarTabelaMotoboys();
+  }
+};
 
-  if (!nome || !qtd || isNaN(valor) || valor <= 0) {
-    alert("⚠️ Preencha todos os campos corretamente para adicionar o produto.");
+// Função para editar motoboy
+const editarMotoboy = (id) => {
+  const motoboy = state.motoboys.find((m) => m.id === id);
+  if (!motoboy) return;
+
+  const nome = prompt("Novo nome:", motoboy.nome);
+  if (nome === null) return;
+
+  const telefone = prompt("Novo telefone:", motoboy.telefone);
+  if (telefone === null) return;
+
+  const placa = prompt("Nova placa:", motoboy.placa);
+  if (placa === null) return;
+
+  const modelo = prompt("Novo modelo:", motoboy.modelo);
+  if (modelo === null) return;
+
+  motoboy.nome = nome.trim();
+  motoboy.telefone = telefone.trim();
+  motoboy.placa = placa.trim();
+  motoboy.modelo = modelo.trim();
+
+  atualizarTabelaMotoboys();
+  alert("Motoboy atualizado com sucesso!");
+};
+
+// Função para adicionar o produto na lista
+function adicionarProduto() {
+  let nome = document.getElementById("produto").value.trim();
+  let descricao = document.getElementById("descricao").value.trim();
+
+  let valorTexto = document.getsElementById("valor").value;
+  let valorFormatado = valorTexto.replace(",", ".");
+  let valor = parseFloat(valorFormatado);
+
+  // Validação
+  if (nome === "" || descricao === "" || isNaN(valor) || valor <= 0) {
+    alert("Preencha todos os campos corretamente para adicionar o produto.");
     return;
   }
 
-  const item = {
-    id: Date.now(),
-    nome,
-    qtd,
-    valor,
-    total: qtd * valor,
+  const arquivoImagem = document.getElementById("imagem").files[0];
+
+  if (!arquivoImagem) {
+    alert("Selecione uma imagem para o produto.");
+    return;
+  }
+
+  const reader = new FileReader();
+
+  reader.onload = function (e) {
+    let item = {
+      id: Date.now(),
+      nome: nome,
+      descricao: descricao,
+      valor: valor,
+      imagem: e.target.result,
+    };
+
+    state.produtos.push(item);
+
+    atualizarTabela();
+
+    document.getElementById("produto").value = "";
+    document.getElementById("descricao").value = "";
+    document.getElementById("valor").value = "";
+    document.getElementById("imagem").value = "";
+
+    const labelImagem = document.querySelector(".label-imagem");
+    labelImagem.textContent = "Selecionar Imagem";
+    labelImagem.style.borderColor = "";
+    labelImagem.style.color = "";
   };
 
-  state.produtos.push(item);
-  atualizarTabela();
-  document.getElementById("produto").value = "";
-  document.getElementById("quantidade").value = "";
-  document.getElementById("valor").value = "";
-};
+  reader.readAsDataURL(arquivoImagem);
+}
 
-const atualizarTabela = () => {
-  const tbody = document.querySelector("#tabelaProdutos tbody");
+// Função para atualizar a tabela
+function atualizarTabela() {
+  let tbody = document.querySelector("#tabelaProdutos tbody");
+
   if (!tbody) return;
 
-  state.totalGeral = 0;
   tbody.innerHTML = "";
 
-  state.produtos.forEach((item) => {
-    state.totalGeral += item.total;
+  state.produtos.forEach(function (item) {
     tbody.innerHTML += `
       <tr>
         <td>${item.nome}</td>
-        <td>${item.qtd}</td>
+        <td>${item.descricao}</td>
         <td>R$ ${formatCurrency(item.valor)}</td>
-        <td>R$ ${formatCurrency(item.total)}</td>
+        <td><img src="${item.imagem}" alt="${item.nome}" style="max-width: 100px; height: auto;"></td>
+        <td>
+          <button class="btn-editar" onclick="editarProduto(${item.id})" title="Editar">✎ Editar</button>
+          <button class="btn-excluir" onclick="excluirProduto(${item.id})" title="Excluir">✕ Excluir</button>
+        </td>
       </tr>
     `;
   });
-
-  document.getElementById("total").textContent = formatCurrency(
-    state.totalGeral,
-  );
-  document.getElementById("valorLiquido").textContent = formatCurrency(
-    state.totalGeral,
-  );
-};
+}
 
 const excluirProduto = (id) => {
-  state.produtos = state.produtos.filter((produto) => produto.id !== id);
+  if (confirm("Tem certeza que deseja excluir este produto?")) {
+    state.produtos = state.produtos.filter((produto) => produto.id !== id);
+    atualizarTabela();
+  }
+};
+
+const editarProduto = (id) => {
+  const produto = state.produtos.find((p) => p.id === id);
+  if (!produto) return;
+
+  const nome = prompt("Novo nome:", produto.nome);
+  if (nome === null) return;
+
+  const descricao = prompt("Nova descrição:", produto.descricao);
+  if (descricao === null) return;
+
+  const valorTexto = prompt("Novo valor:", produto.valor.toString());
+  if (valorTexto === null) return;
+
+  const valor = parseFloat(valorTexto.replace(",", "."));
+  if (isNaN(valor) || valor <= 0) {
+    alert("Valor inválido!");
+    return;
+  }
+
+  produto.nome = nome.trim();
+  produto.descricao = descricao.trim();
+  produto.valor = valor;
+
   atualizarTabela();
-};
-
-const finalizarCompra = () => {
-  if (state.produtos.length === 0) {
-    alert("⚠️ Adicione produtos antes de finalizar a compra.");
-    return;
-  }
-
-  alert(
-    `✅ Compra finalizada com sucesso! Total do pedido: R$ ${formatCurrency(state.totalGeral)}`,
-  );
-};
-
-const aplicarDesconto = () => {
-  if (state.produtos.length === 0) {
-    alert("⚠️ Adicione produtos antes de aplicar desconto.");
-    return;
-  }
-
-  const descontoValor = parseFloat(
-    document.getElementById("descontoValor")?.value.replace(",", ".") || 0,
-  );
-  const descontoPercentual = parseFloat(
-    document.getElementById("descontoPercentual")?.value.replace(",", ".") || 0,
-  );
-
-  if (descontoValor <= 0 && descontoPercentual <= 0) {
-    alert("⚠️ Informe um desconto em R$ ou em % para aplicar.");
-    return;
-  }
-
-  let desconto = 0;
-  if (descontoPercentual > 0) {
-    desconto = (state.totalGeral * descontoPercentual) / 100;
-  } else {
-    desconto = descontoValor;
-  }
-
-  if (desconto > state.totalGeral) {
-    desconto = state.totalGeral;
-  }
-
-  const valorLiquido = state.totalGeral - desconto;
-  document.getElementById("valorLiquido").textContent =
-    formatCurrency(valorLiquido);
+  alert("Produto atualizado com sucesso!");
 };
 
 const configurarRecuperacaoSenha = () => {
@@ -252,6 +336,21 @@ const inicializarApp = () => {
   produtoForm?.addEventListener("submit", (event) => {
     event.preventDefault();
     adicionarProduto();
+  });
+
+  const inputImagem = document.getElementById("imagem");
+  const labelImagem = document.querySelector(".label-imagem");
+
+  labelImagem?.addEventListener("click", () => {
+    inputImagem?.click();
+  });
+
+  inputImagem?.addEventListener("change", (event) => {
+    if (event.target.files && event.target.files[0]) {
+      labelImagem.textContent = `${event.target.files[0].name}`;
+      labelImagem.style.borderColor = "var(--cor-secundaria)";
+      labelImagem.style.color = "var(--cor-secundaria)";
+    }
   });
 
   const btnFinalizar = document.getElementById("btn-finalizar");
