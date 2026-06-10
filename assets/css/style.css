@@ -1005,7 +1005,9 @@ header.header-main {
   font-size: 30px;
 }
 
-/* portal entregador */
+/*========================================
+    PORTAL DO ENTREGADOR
+ ========================================*/
 .sidebar-panel .btn-primary-action:first-of-type {
   margin-bottom: 25px;
 }
