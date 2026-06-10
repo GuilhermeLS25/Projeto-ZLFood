@@ -999,3 +999,8 @@ header.header-main {
   height: 100%;
   border: 0;
 }
+
+.sidebar-item i {
+  margin-right: 15px;
+  font-size: 30px;
+}
