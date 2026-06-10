@@ -18,11 +18,9 @@
 
     <div class="app-container">
 
-        <!-- Painel Lateral Unificado para Desktop -->
         <div class="sidebar-panel">
 
             <div class="sidebar-top">
-                <!-- Caixa de Navegação Base -->
                 <div class="top-navigation-bar">
                     <div class="nav-instruction">
                         <div class="nav-icon-turn">
@@ -38,13 +36,11 @@
                     </div>
                 </div>
 
-                <!-- Status e Identificação -->
                 <div class="status-header">
                     <span class="status-badge">A Caminho</span>
                     <span class="order-number">Pedido #8841</span>
                 </div>
 
-                <!-- Informações de Localização -->
                 <div class="address-info">
                     <div class="address-icon">
                         <i class="fa-solid fa-location-dot"></i>
@@ -55,7 +51,6 @@
                     </div>
                 </div>
 
-                <!-- Comunicação e Suporte -->
                 <div class="quick-actions">
                     <button class="btn-quick" onclick="alert('Ligando para o estabelecimento/suporte...')">
                         <i class="fa-solid fa-phone"></i> Ligar
@@ -66,16 +61,35 @@
                 </div>
             </div>
 
-            <!-- Ação Principal Inferior -->
             <button class="btn-primary-action"
                 onclick="alert('Gatilho JavaScript acionado: Direcionando para a Tela 13 (Scanner de Segurança) para ativação da câmera.')">
                 CHEGUEI AO LOCAL
                 <i class="fa-solid fa-chevron-right"></i>
             </button>
 
+            <div class="sidebar-top">
+                <div class="status-header">
+                    <span class="order-number">Pedido #8843</span>
+                    <div class="earning-badge">R$ 12,00</div>
+                </div>
+
+                <div class="address-info">
+                    <div class="address-icon">
+                        <i class="fa-solid fa-store"></i>
+                    </div>
+                    <div class="address-text">
+                        <h3>Sushi Express <span>(A 1.8 km)</span></h3>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn-primary-action" onclick="alert('Você pegou o Pedido #8843!')">
+                PEGAR PEDIDO
+                <i class="fa-solid fa-motorcycle"></i>
+            </button>
+
         </div>
 
-        <!-- Mapa que toma todo o restante da tela à direita -->
         <div class="map-wrapper">
             <iframe
                 src="https://www.google.com/maps/d/u/1/embed?mid=1uiDwkYZ9-nQNwFieEKEQEn62XLI4m60&ehbc=2E312F&noprof=1"></iframe>

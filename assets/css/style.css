@@ -1004,3 +1004,40 @@ header.header-main {
   margin-right: 15px;
   font-size: 30px;
 }
+
+/* portal entregador */
+.sidebar-panel .btn-primary-action:first-of-type {
+  margin-bottom: 25px;
+}
+
+.sidebar-panel .btn-primary-action + .sidebar-top {
+  border-top: 2px dashed #ccc;
+  padding-top: 15px;
+}
+
+.sidebar-panel .btn-primary-action + .sidebar-top .status-header {
+  margin-bottom: 10px;
+}
+
+.sidebar-panel .btn-primary-action + .sidebar-top .earning-badge {
+  position: static;
+  margin: 0;
+}
+
+.sidebar-panel .btn-primary-action + .sidebar-top .address-info {
+  margin-bottom: 10px;
+}
+
+.sidebar-panel .btn-primary-action + .sidebar-top .fa-store {
+  color: #ff9800;
+}
+
+.sidebar-panel .btn-primary-action + .sidebar-top .address-text h3 span {
+  font-size: 0.8rem;
+  font-weight: normal;
+  color: #666;
+}
+
+.sidebar-panel .btn-primary-action:last-of-type {
+  background-color: #2e7d32;
+}
