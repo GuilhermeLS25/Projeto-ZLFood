@@ -159,7 +159,7 @@ input {
 }
 
 input::placeholder {
-  font-family: var(--fonte-principal)
+  font-family: var(--fonte-principal);
 }
 
 hr {
@@ -184,6 +184,7 @@ header.header-main {
   justify-content: space-between;
   align-items: center;
   padding: var(--padding-header);
+  margin-top: 30px;
 }
 
 .logo-container {
@@ -201,7 +202,7 @@ header.header-main {
   width: 1px;
   height: var(--altura-divisoria);
   background-color: var(--cor-secundaria);
-  margin: 0 10px;
+  margin: 0 15px;
 }
 
 .divisor {
@@ -211,16 +212,20 @@ header.header-main {
   margin: 10px 0;
 }
 
-.mensagem,
+.mensagem {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-left: 10px;
+  margin-bottom: 5px;
+}
+
 .conta {
   display: flex;
   flex-direction: column;
   flex: 1;
   padding-left: 30px;
-  margin-bottom: 50px;
-}
-
-.conta {
+  margin-bottom: 15px;
   align-items: center;
   text-align: center;
   font-size: 25px;
@@ -305,6 +310,7 @@ header.header-main {
   outline: none;
   color: var(--cor-texto-campo);
   font-size: var(--texto-padrao);
+  
 }
 
 .email input::placeholder,
@@ -329,8 +335,12 @@ header.header-main {
   font-size: var(--texto-pequeno);
 }
 
+#confirme-senha{
+  margin-top: 10px;
+}
+
 .termos-container {
-  margin: 0;
+  margin-top: 20px;
 }
 
 .checkbox-label {
@@ -493,7 +503,7 @@ header.header-main {
 }
 
 #cadastrar p {
-  color: var(--cor-card);
+  color: var(--cor-texto-campo);
   font-size: var(--texto-pequeno);
 }
 

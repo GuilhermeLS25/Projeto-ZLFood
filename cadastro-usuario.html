@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZL Food | Gestão para Restaurantes</title>
+    <title>ZL Food | Cadastro</title>
 
     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
@@ -23,10 +23,6 @@
 <body class="page-auth">
 
     <header class="header-main">
-        <div class="logo-container">
-            <img src="assets/images/logo.png" alt="ZL FOOD Logo">
-        </div>
-
         <div class="divisoria"></div>
 
         <div class="mensagem">
@@ -44,11 +40,11 @@
                     </a>
                 </div>
                 <div class="campos">
+
                     <div class="conta">
                         <ion-icon id="home1" name="person-add-outline"></ion-icon>
                         <h2 id="acesseConta">Cadastre sua Conta</h2>
                     </div>
-
                     <label class="email-label">Nome</label>
                     <div class="email">
                         <ion-icon name="person"></ion-icon>
@@ -67,14 +63,11 @@
                         <input id="senha" class="senha" placeholder="Crie uma senha" type="password" required>
                     </div>
 
-                    <div class="senha">
+                    <div id="confirme-senha" class="senha">
                         <ion-icon name="checkmark-circle-outline"></ion-icon>
-                        <input id="confirme-senha" class="senha" placeholder="Confirme sua senha" type="password"
-                            required>
+                        <input class="senha" placeholder="Confirme sua senha" type="password" required>
                     </div>
                 </div>
-
-                <div class="divisor"></div>
 
                 <div class="termos-container">
                     <label class="checkbox-label">
@@ -86,8 +79,6 @@
                         </span>
                     </label>
                 </div>
-
-                <div class="divisor"></div>
 
                 <fieldset id="perfil">
                     <legend>Selecione seu Perfil</legend>
@@ -123,8 +114,6 @@
                 <div id="entrar">
                     <button type="submit" onclick="cadastrar(event)">Cadastrar</button>
                 </div>
-
-                <div class="divisor"></div>
 
             </div>
         </form>
