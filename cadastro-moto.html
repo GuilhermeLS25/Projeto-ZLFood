@@ -18,10 +18,10 @@
     <!-- SIDEBAR -->
     <aside class="sidebar">
       <h2>Sistema</h2>
-      <a href="#">Dashboard</a>
-      <a href="#">Cadastros</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="cadastro-moto.html">Cadastros</a>
       <a href="cadastro-produtos.html">Produtos</a>
-      <a href="#">Relatórios</a>
+      <a href="#">Cardapio</a>
     </aside>
 
     <!-- CONTEÚDO -->
@@ -33,17 +33,28 @@
       <!-- FORMULARIO DE CADASTRO -->
       <section class="card">
         <form id="cadastro-form">
-          <input type="text" id="nome" placeholder="Digite seu nome..." />
-          <input type="email" id="email" placeholder="Digite seu email.." />
+          <input type="text" id="nome" placeholder="Nome do motoboy" />
+          <input type="tel" id="telefone" placeholder="Telefone" />
+          <input type="text" id="placa" placeholder="Placa da moto" />
+          <input type="text" id="modelo" placeholder="Modelo da moto" />
           <button type="submit">Cadastrar</button>
         </form>
       </section>
 
-      <!-- LISTA DE USUARIOS CADASTRADOS -->
+      <!-- LISTA DE MOTOBOYS CADASTRADOS -->
       <section class="card">
-        <h2>Usuários Cadastrados</h2>
-        <ul id="lista">
-        </ul>
+        <h2>Motoboys Cadastrados</h2>
+        <table id="tabelaMotoboys">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Telefone</th>
+              <th>Placa</th>
+              <th>Modelo</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
       </section>
     </main>
   </div>

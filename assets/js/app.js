@@ -1,6 +1,7 @@
 const state = {
   produtos: [],
   totalGeral: 0,
+  motoboys: [],
 };
 
 const formatCurrency = (value) => {
@@ -44,9 +45,7 @@ const cadastrar = (event) => {
   const confirmeSenha = confirmeSenhaCampo?.value.trim();
 
   if (checkboxTermos && !checkboxTermos.checked) {
-    alert(
-      "Você precisa aceitar os Termos para continuar!",
-    );
+    alert("Você precisa aceitar os Termos para continuar!");
     return;
   }
 
@@ -65,10 +64,53 @@ const cadastrar = (event) => {
     return;
   }
 
-  alert(
-    `Sua Conta foi criada com sucesso!! Redirecionando...`,
-  );
+  alert(`Sua Conta foi criada com sucesso!! Redirecionando...`);
   window.location.href = "index.html";
+};
+
+const cadastrarMoto = (event) => {
+  if (event) event.preventDefault();
+
+  const nomeCampo = document.getElementById("nome");
+  const telefoneCampo = document.getElementById("telefone");
+  const placaCampo = document.getElementById("placa");
+  const modeloCampo = document.getElementById("modelo");
+
+  const nome = nomeCampo?.value.trim();
+  const telefone = telefoneCampo?.value.trim();
+  const placa = placaCampo?.value.trim();
+  const modelo = modeloCampo?.value.trim();
+
+  if (!nome || !telefone || !placa || !modelo) {
+    alert("Preencha todos os campos para cadastrar o motoboy.");
+    return;
+  }
+
+  state.motoboys.push({ nome, telefone, placa, modelo });
+  atualizarTabelaMotoboys();
+
+  alert("Motoboy cadastrado com sucesso!");
+  nomeCampo.value = "";
+  telefoneCampo.value = "";
+  placaCampo.value = "";
+  modeloCampo.value = "";
+};
+
+const atualizarTabelaMotoboys = () => {
+  const tbody = document.querySelector("#tabelaMotoboys tbody");
+  if (!tbody) return;
+
+  tbody.innerHTML = "";
+  state.motoboys.forEach((motoboy) => {
+    tbody.innerHTML += `
+      <tr>
+        <td>${motoboy.nome}</td>
+        <td>${motoboy.telefone}</td>
+        <td>${motoboy.placa}</td>
+        <td>${motoboy.modelo}</td>
+      </tr>
+    `;
+  });
 };
 
 const adicionarProduto = () => {
@@ -197,7 +239,14 @@ const inicializarApp = () => {
   loginForm?.addEventListener("submit", logar);
 
   const cadastroForm = document.getElementById("cadastro-form");
-  cadastroForm?.addEventListener("submit", cadastrar);
+  const currentPage = window.location.pathname.split("/").pop();
+  if (cadastroForm) {
+    if (currentPage === "cadastro-moto.html") {
+      cadastroForm.addEventListener("submit", cadastrarMoto);
+    } else {
+      cadastroForm.addEventListener("submit", cadastrar);
+    }
+  }
 
   const produtoForm = document.getElementById("produto-form");
   produtoForm?.addEventListener("submit", (event) => {
