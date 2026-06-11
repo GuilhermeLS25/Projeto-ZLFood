@@ -75,28 +75,6 @@
 
 @media (prefers-color-scheme: light) {
   :root {
-    --cor-primaria: #e2e9de;
-    --cor-secundaria: #8bae66;
-    --cor-secundaria-hover: #a3c983;
-    --cor-card: #222d1a;
-
-    --cor-escura: #0d120a;
-    --cor-clara: #ffffff;
-
-    --cor-texto-campo: #ced4ca;
-    --cor-texto-placeholder: #687261;
-    --cor-label: #a6c875;
-
-    --branco-50: rgba(255, 255, 255, 0.15);
-    --branco-20: rgba(255, 255, 255, 0.05);
-
-    --imagem-fundo: url("../images/light.png");
-    --fundo-login: rgba(14, 18, 11, 0.75);
-    --fundo-campo: #090d07;
-
-    --sombra: 0px 8px 30px rgba(0, 0, 0, 0.5);
-    --sombra-login: 0 8px 32px rgba(0, 0, 0, 0.7);
-    --sombra-botao: 0 4px 12px rgba(0, 0, 0, 0.4);
   }
 }
 
@@ -132,7 +110,7 @@ body {
 }
 
 .sidebar {
-  width: 220px;
+  width: 250px;
   height: 100dvh;
   background-color: var(--cor-card);
   color: white;
@@ -158,7 +136,7 @@ body {
 }
 
 .content {
-  margin-left: 220px;
+  margin-left: 250px;
   padding: 20px;
   width: 100%;
 }
@@ -171,7 +149,7 @@ body {
 }
 
 .card {
-  background-color: #dfdfdf;
+  background-color: rgba(0, 0, 0, 0.2);
   padding: 15px;
   border-radius: 10px;
   margin-bottom: 20px;
@@ -181,8 +159,9 @@ input {
   width: 100%;
   padding: 10px;
   margin: 8px 0;
-  border: 1px solid #000000;
+  border: rgba(213, 213, 213, 0.2);
   border-radius: 6px;
+  background-color: #aaa9a9;
 }
 
 button {
@@ -1006,40 +985,355 @@ header.header-main {
 }
 
 /*========================================
-    PORTAL DO ENTREGADOR
+    PORTAL DO ENTREGADOR (CSS DO MEU JEITO)
  ========================================*/
-.sidebar-panel .btn-primary-action:first-of-type {
-  margin-bottom: 25px;
+
+/* Esse é o primeiro botão verde que fica em cima */
+.botao-principal-de-cima {
+  margin-bottom: 25px; /* empurra o resto pra baixo */
 }
 
-.sidebar-panel .btn-primary-action + .sidebar-top {
-  border-top: 2px dashed #ccc;
-  padding-top: 15px;
+/* Esse é o segundo botão verde que fica embaixo */
+.botao-principal-de-baixo {
+  background-color: #2e7d32; /* verde escuro que copiei do google */
 }
 
-.sidebar-panel .btn-primary-action + .sidebar-top .status-header {
+/* Essa é a linha pontilhada que divide as coisas */
+.topo-da-barra-lateral {
+  border-top: 2px dashed #ccc; /* pontinhos cinzas */
+  padding-top: 15px; /* espaço pro texto não colar na linha */
+}
+
+/* Espaço embaixo do título do status */
+.titulo-do-status {
   margin-bottom: 10px;
 }
 
-.sidebar-panel .btn-primary-action + .sidebar-top .earning-badge {
-  position: static;
-  margin: 0;
+/* Tive que mexer no distintivo de ganhos pq ele tava sumindo */
+.distintivo-de-ganhos {
+  position: static; /* tirei o position que o outro cara colocou */
+  margin: 0; /* zerei pra garantir */
 }
 
-.sidebar-panel .btn-primary-action + .sidebar-top .address-info {
+/* Espaço embaixo do endereço */
+.informacao-do-endereco {
   margin-bottom: 10px;
 }
 
-.sidebar-panel .btn-primary-action + .sidebar-top .fa-store {
-  color: #ff9800;
+/* Mudar a cor do icone de lojinha pra laranja */
+.icone-da-loja {
+  color: #ff9800; /* laranja cor de abóbora */
 }
 
-.sidebar-panel .btn-primary-action + .sidebar-top .address-text h3 span {
-  font-size: 0.8rem;
-  font-weight: normal;
-  color: #666;
+/* Texto pequeno que fica dentro do endereço */
+.texto-pequeno-do-endereco {
+  font-size: 0.8rem; /* tamanho menor */
+  font-weight: normal; /* tira o negrito que o h3 coloca sozinho */
+  color: #666; /* cinza meio escuro */
 }
 
-.sidebar-panel .btn-primary-action:last-of-type {
-  background-color: #2e7d32;
+/* ==================================================
+   DASHBOARD - ESTILOS ESPECÍFICOS
+================================================== */
+body.dashboard-page {
+  min-height: 100vh;
+  display: flex;
+  background-color: var(--cor-escura);
+  color: var(--cor-clara);
+}
+
+body.dashboard-page .container {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+
+body.dashboard-page .sidebar {
+  width: var(--sidebar-width);
+  background-color: var(--fundo-campo);
+  border-right: var(--borda-campo);
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-campo);
+}
+
+body.dashboard-page .sidebar h2 {
+  font-family: var(--fonte-principal);
+  color: var(--cor-primaria);
+  font-size: var(--texto-padrao);
+  text-align: center;
+  margin-bottom: 20px;
+  border-bottom: var(--borda-campo);
+  padding-bottom: 15px;
+}
+
+body.dashboard-page .sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-campo);
+}
+
+body.dashboard-page .sidebar-item {
+  border-radius: var(--radius-card);
+  text-decoration: none;
+  color: var(--cor-texto-campo);
+  padding: 12px 15px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: var(--texto-pequeno);
+  transition: all var(--transition-padrao);
+}
+
+body.dashboard-page .sidebar-item i {
+  font-size: 18px;
+}
+
+body.dashboard-page .sidebar-item:hover {
+  background-color: var(--cor-secundaria);
+  color: var(--cor-clara);
+}
+
+body.dashboard-page .sidebar-item.active {
+  background-color: var(--cor-card);
+  color: var(--cor-clara);
+  border: 1px solid var(--cor-primaria);
+}
+
+body.dashboard-page .main-content {
+  flex: 1;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-cards);
+  overflow-y: auto;
+}
+
+/* Cabeçalho */
+body.dashboard-page .dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: var(--borda-campo);
+  padding-bottom: 20px;
+}
+
+body.dashboard-page .titulo-dashboard {
+  font-family: var(--fonte-principal);
+  font-size: var(--texto-grande);
+  color: var(--cor-clara);
+  line-height: var(--line-height-titulos);
+}
+
+body.dashboard-page .subtitulo-dashboard {
+  color: var(--cor-texto-campo);
+  font-size: var(--texto-pequeno);
+}
+
+body.dashboard-page .header-buttons {
+  display: flex;
+  gap: var(--gap-campo);
+}
+
+/* Botões */
+body.dashboard-page .btn-primary-custom {
+  background-color: var(--cor-primaria);
+  color: var(--cor-escura);
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: var(--radius-campo);
+  cursor: pointer;
+  font-size: var(--texto-pequeno);
+  box-shadow: var(--sombra-botao);
+  transition: background var(--transition-padrao);
+}
+
+body.dashboard-page .btn-primary-custom:hover {
+  background-color: var(--cor-clara);
+}
+
+body.dashboard-page .btn-clear-custom {
+  background-color: transparent;
+  color: var(--cor-clara);
+  border: var(--borda-campo);
+  padding: 10px 20px;
+  border-radius: var(--radius-campo);
+  cursor: pointer;
+  font-size: var(--texto-pequeno);
+  transition: background var(--transition-padrao);
+}
+
+body.dashboard-page .btn-clear-custom:hover {
+  background-color: #ef4444;
+  border-color: #ef4444;
+}
+
+/* Grid de KPIs */
+body.dashboard-page .kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--gap-cards);
+}
+
+body.dashboard-page .card-custom {
+  background-color: var(--cor-card);
+  border: var(--borda-campo);
+  border-radius: var(--radius-geral);
+  padding: var(--padding-card);
+  box-shadow: var(--sombra);
+}
+
+body.dashboard-page .kpi-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+body.dashboard-page .label-kpi {
+  font-size: 12px;
+  font-weight: bold;
+  color: var(--cor-clara);
+  opacity: 0.8;
+  letter-spacing: 1px;
+}
+
+body.dashboard-page .kpi-header i {
+  font-size: var(--texto-padrao);
+  color: var(--cor-primaria);
+}
+
+body.dashboard-page .valor-kpi {
+  font-size: var(--texto-grande);
+  font-weight: bold;
+  color: var(--cor-primaria);
+  margin-bottom: 5px;
+}
+
+body.dashboard-page .valor-kpi-claro {
+  font-size: var(--texto-grande);
+  font-weight: bold;
+  color: var(--cor-clara);
+  margin-bottom: 5px;
+}
+
+body.dashboard-page .descricao-kpi {
+  font-size: 12px;
+  color: var(--cor-texto-campo);
+}
+
+/* Layout de colunas do painel inferior */
+body.dashboard-page .dashboard-panels {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--gap-cards);
+}
+
+body.dashboard-page .ranking-panel,
+body.dashboard-page .visuals-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-cards);
+}
+
+body.dashboard-page .titulo-seccao {
+  font-family: var(--fonte-principal);
+  font-size: var(--texto-padrao);
+  color: var(--cor-clara);
+  margin-bottom: 15px;
+}
+
+/* Lista de Produtos */
+body.dashboard-page .ranking-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+body.dashboard-page .item-ranking {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background-color: var(--fundo-campo);
+  border: var(--borda-campo);
+  border-radius: var(--radius-card);
+}
+
+body.dashboard-page .nome-produto {
+  font-weight: 600;
+  font-size: var(--texto-pequeno);
+}
+
+body.dashboard-page .tag-unidades {
+  background-color: var(--cor-card);
+  color: var(--cor-primaria);
+  padding: 4px 10px;
+  border-radius: var(--radius-campo);
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Container do Gráfico */
+body.dashboard-page .chart-container {
+  width: 100%;
+  height: 250px;
+  position: relative;
+  margin-top: 10px;
+}
+
+/* Feed Simples de Histórico */
+body.dashboard-page .feed-panel {
+  display: flex;
+  flex-direction: column;
+  max-height: 280px;
+}
+
+body.dashboard-page .feed-list {
+  overflow-y: auto;
+  max-height: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-right: 5px;
+}
+
+body.dashboard-page .feed-vazio {
+  text-align: center;
+  padding: 20px;
+  color: var(--cor-texto-campo);
+  font-size: var(--texto-pequeno);
+}
+
+body.dashboard-page .feed-item {
+  background-color: var(--fundo-campo);
+  border: var(--borda-campo);
+  padding: 10px 15px;
+  border-radius: var(--radius-card);
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+body.dashboard-page .feed-preco {
+  font-weight: bold;
+  color: var(--cor-primaria);
+}
+
+@media (max-width: 900px) {
+  body.dashboard-page .container {
+    flex-direction: column;
+  }
+  body.dashboard-page .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: var(--borda-campo);
+  }
+  body.dashboard-page .dashboard-panels {
+    grid-template-columns: 1fr;
+  }
 }
