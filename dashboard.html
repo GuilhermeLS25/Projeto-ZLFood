@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZL Food | Dashboard Administrativo</title>
-    <link rel="stylesheet" href="assets/css/style1.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 
     <!-- Font Awesome para os ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
@@ -25,299 +25,76 @@
     <div class="container">
         <!-- BARRA LATERAL (SIDEBAR) -->
         <aside class="sidebar">
-            <h2>Sistema</h2>
-            <div class="sidebar-menu">
-                <a href="#" class="sidebar-item active">
-                    <i class="fa-solid fa-chart-column"></i>Dashboard
+            <!-- Título -->
+            <div class="box-1">
+                <div class="btn btn-one">
+                    <h2>SISTEMA ADMINISTRATIVO</h2>
+                </div>
+            </div>
+
+            <!-- Botão Dashboard -->
+            <div class="box-3">
+                <a href="dashboard.html" class="btn btn-three">
+                    <i class="fa-solid fa-chart-line"></i> DASHBOARD
                 </a>
-                <a href="#funcionarios" class="sidebar-item">
-                    <i class="fa-solid fa-user-tie"></i>Funcionários
+            </div>
+
+            <!-- Botão Funcionários -->
+            <div class="box-3">
+                <a href="cadastro-moto.html" class="btn btn-three">
+                    <i class="fa-solid fa-users"></i> FUNCIONÁRIOS
                 </a>
-                <a href="#cardapio" class="sidebar-item">
-                    <i class="fa-solid fa-burger"></i>Cardápio
+            </div>
+
+            <!-- Botão Cardápio -->
+            <div class="box-3">
+                <a href="cadastro-produtos.html" class="btn btn-three">
+                    <i class="fa-solid fa-book-open"></i> CARDAPIO
                 </a>
-                <a href="#cupons" class="sidebar-item">
-                    <i class="fa-solid fa-book-open"></i>Gerenciar Cupons
+            </div>
+
+            <!-- Botão Cupons -->
+            <div class="box-3">
+                <a href="cupons-admin.html" id="cupon" class="btn btn-three">
+                    <i class="fa-solid fa-ticket"></i> GERENCIADOR DE CUPONS
                 </a>
             </div>
         </aside>
 
-        <!-- AREA DE CONTEÚDO PRINCIPAL (DASHBOARD) -->
-        <main class="main-content">
-
-            <!-- CABEÇALHO DO PAINEL -->
-            <header class="dashboard-header">
-                <div class="header-text">
-                    <h1 class="titulo-dashboard">SISTEMA DE VENDAS ATIVO</h1>
-                    <p class="subtitulo-dashboard">Monitoramento de Pedidos e Faturamento em Tempo Real</p>
-                </div>
-                <div class="header-buttons">
-                    <button onclick="gerarVendaSimulada()" class="btn-primary-custom">
-                        <i class="fa-solid fa-bolt"></i> Simular Nova Venda
-                    </button>
-                    <button onclick="limparTudo()" class="btn-clear-custom">
-                        <i class="fa-solid fa-trash-can"></i> Limpar Dados
-                    </button>
-                </div>
+        <section class="container-cartoes">
+            <header class="topbar">
+                <h1>Cadastro de Funcionarios</h1>
             </header>
-
-            <!-- CARDS DE METRICAS PRINCIPAIS (KPIs) -->
-            <section class="kpi-grid">
-
-                <!-- CARD: Faturamento Total -->
-                <div class="card-custom">
-                    <div class="kpi-header">
-                        <span class="label-kpi">FATURAMENTO</span>
-                        <i class="fa-solid fa-dollar-sign"></i>
-                    </div>
-                    <p id="kpi-faturamento" class="valor-kpi">R$ 0,00</p>
-                    <p class="descricao-kpi">Soma de todas as vendas</p>
+            <div class="cartao">
+                <div class="icone-circulo icone-verde">
+                    $ </div>
+                <div class="info-cartao">
+                    <span class="titulo-cartao">Faturamento Mensal</span>
+                    <strong class="valor-cartao">R$ 560,40</strong>
                 </div>
-
-                <!-- CARD: Quantidade de Pedidos -->
-                <div class="card-custom">
-                    <div class="kpi-header">
-                        <span class="label-kpi">QUANTIDADE</span>
-                        <i class="fa-solid fa-box text-light"></i>
-                    </div>
-                    <p id="kpi-pedidos" class="valor-kpi-claro">0</p>
-                    <p class="descricao-kpi">Pedidos realizados hoje</p>
-                </div>
-
-                <!-- CARD: Ticket Médio -->
-                <div class="card-custom">
-                    <div class="kpi-header">
-                        <span class="label-kpi">TICKET MÉDIO</span>
-                        <i class="fa-solid fa-arrow-trend-up"></i>
-                    </div>
-                    <p id="kpi-ticket" class="valor-kpi">R$ 0,00</p>
-                    <p class="descricao-kpi">Valor médio gasto por pedido</p>
-                </div>
-
-                <!-- CARD: Último Comprador -->
-                <div class="card-custom">
-                    <div class="kpi-header">
-                        <span class="label-kpi">ÚLTIMO PEDIDO</span>
-                        <i class="fa-solid fa-user text-light"></i>
-                    </div>
-                    <p id="kpi-ultimo-cliente" class="valor-kpi-claro">-</p>
-                    <p id="kpi-ultimo-detalhe" class="descricao-kpi">Aguardando registro</p>
-                </div>
-
-            </section>
-
-            <!-- AREA DE GRAFICOS E HISTORICOS -->
-            <div class="dashboard-panels">
-
-                <!-- COLUNA DA ESQUERDA: Líderes de Vendas (Cardápio ZL Food) -->
-                <section class="ranking-panel">
-                    <div class="card-custom">
-                        <h2 class="titulo-seccao">Produtos Líderes</h2>
-                        <ul class="ranking-list">
-                            <li class="item-ranking">
-                                <span class="nome-produto">Hambúrguer</span>
-                                <span id="rank-burger" class="tag-unidades">0 un.</span>
-                            </li>
-                            <li class="item-ranking">
-                                <span class="nome-produto">Pizza</span>
-                                <span id="rank-pizza" class="tag-unidades">0 un.</span>
-                            </li>
-                            <li class="item-ranking">
-                                <span class="nome-produto">Batata Frita</span>
-                                <span id="rank-fritas" class="tag-unidades">0 un.</span>
-                            </li>
-                            <li class="item-ranking">
-                                <span class="nome-produto">Refrigerante</span>
-                                <span id="rank-refri" class="tag-unidades">0 un.</span>
-                            </li>
-                        </ul>
-                    </div>
-                </section>
-
-                <!-- COLUNA DA DIREITA: Gráficos e Transações Ativas -->
-                <section class="visuals-panel">
-
-                    <!-- Painel do Gráfico de Vendas -->
-                    <div class="card-custom">
-                        <h2 class="titulo-seccao">Curva de Faturamento Diário</h2>
-                        <div class="chart-container">
-                            <canvas id="graficoVendas"></canvas>
-                        </div>
-                    </div>
-
-                    <!-- Feed ao Vivo de Atividade -->
-                    <div class="card-custom feed-panel">
-                        <div class="panel-header">
-                            <h2 class="titulo-seccao">Histórico de Pedidos</h2>
-                            <span class="tag-live-alerta">Ao Vivo</span>
-                        </div>
-
-                        <!-- Lista receptora de novos blocos HTML dinâmicos -->
-                        <div id="feed-pedidos" class="feed-list rolagem-custom">
-
-                            <!-- Estado Vazio Inicial -->
-                            <div id="feed-vazio" class="feed-vazio">
-                                <i class="fa-solid fa-folder-open text-muted"></i>
-                                <p class="feed-vazio-texto-1">Nenhuma venda registrada.</p>
-                                <p class="feed-vazio-texto-2">Aguardando transações...</p>
-                            </div>
-
-                        </div>
-                    </div>
-
-                </section>
-
             </div>
 
-        </main>
-    </div>
+            <div class="cartao">
+                <div class="icone-circulo icone-azul">
+                    🛍️
+                </div>
+                <div class="info-cartao">
+                    <span class="titulo-cartao">Qtd. de Pedidos</span>
+                    <strong class="valor-cartao">3</strong>
+                </div>
+            </div>
 
-    <script>
-        // Variáveis globais simples para guardar as contas do sistema
-        var faturamentoTotal = 0;
-        var quantidadePedidos = 0;
+            <div class="cartao">
+                <div class="icone-circulo icone-roxo">
+                    👤
+                </div>
+                <div class="info-cartao">
+                    <span class="titulo-cartao">Último Comprador</span>
+                    <strong class="valor-cartao">João Silva</strong>
+                </div>
+            </div>
 
-        // Guardar as quantidades de cada item vendido (começam em zero)
-        var totalBurger = 0;
-        var totalPizza = 0;
-        var totalFritas = 0;
-        var totalRefri = 0;
-
-        // Listas fáceis para sortear os dados dos clientes e do cardápio
-        var nomesClientes = ["Carlos Silva", "Ana Souza", "Mateus Reis", "Julia Costa", "Rodrigo Ramos", "Beatriz Lima", "Fernando Cruz"];
-        var produtosMenu = ["Hambúrguer", "Pizza", "Batata Frita", "Refrigerante"];
-        var valoresMenu = [32.90, 45.00, 18.50, 8.00];
-
-        // Pegar o canvas do HTML
-        var ctx = document.getElementById('graficoVendas').getContext('2d');
-
-        // Criar o gráfico do jeito mais básico e limpo possível (sem configurações difíceis!)
-        var graficoVendas = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: [], // vai guardar os nomes dos pedidos: "Pedido 1", "Pedido 2"...
-                datasets: [{
-                    label: 'Faturamento Total (R$)',
-                    data: [], // vai guardar o acumulado de faturamento
-                    borderColor: '#8bae66', // var(--cor-primaria)
-                    backgroundColor: 'rgba(139, 174, 102, 0.15)', // fundo verde bem transparente
-                    borderWidth: 3
-                }]
-            }
-        });
-
-        // Função que roda quando clica no botão de Vender
-        function gerarVendaSimulada() {
-            // 1. Sorteando o cliente e o produto usando posições aleatórias
-            var posicaoCliente = Math.floor(Math.random() * nomesClientes.length);
-            var posicaoProduto = Math.floor(Math.random() * produtosMenu.length);
-
-            var clienteSorteado = nomesClientes[posicaoCliente];
-            var produtoSorteado = produtosMenu[posicaoProduto];
-            var precoSorteado = valoresMenu[posicaoProduto];
-
-            // 2. Fazendo as contas simples de somar
-            faturamentoTotal = faturamentoTotal + precoSorteado;
-            quantidadePedidos = quantidadePedidos + 1;
-
-            // 3. Atualizar o contador individual do item sorteado usando if/else simples
-            if (produtoSorteado == "Hambúrguer") {
-                totalBurger = totalBurger + 1;
-            } else if (produtoSorteado == "Pizza") {
-                totalPizza = totalPizza + 1;
-            } else if (produtoSorteado == "Batata Frita") {
-                totalFritas = totalFritas + 1;
-            } else if (produtoSorteado == "Refrigerante") {
-                totalRefri = totalRefri + 1;
-            }
-
-            // 4. Calcular o ticket médio (total dividido pela quantidade de pedidos)
-            var ticketMedio = faturamentoTotal / quantidadePedidos;
-
-            // Colocar os valores calculados na tela usando innerText direto
-            document.getElementById("kpi-faturamento").innerText = "R$ " + faturamentoTotal.toFixed(2);
-            document.getElementById("kpi-pedidos").innerText = quantidadePedidos;
-            document.getElementById("kpi-ticket").innerText = "R$ " + ticketMedio.toFixed(2);
-            document.getElementById("kpi-ultimo-cliente").innerText = clienteSorteado;
-            document.getElementById("kpi-ultimo-detalhe").innerText = "Comprou: " + produtoSorteado;
-
-            // Atualizar os números do ranking lateral
-            document.getElementById("rank-burger").innerText = totalBurger + " un.";
-            document.getElementById("rank-pizza").innerText = totalPizza + " un.";
-            document.getElementById("rank-fritas").innerText = totalFritas + " un.";
-            document.getElementById("rank-refri").innerText = totalRefri + " un.";
-
-            // Colocar um ponto novo no nosso gráfico
-            graficoVendas.data.labels.push('Ped ' + quantidadePedidos);
-            graficoVendas.data.datasets[0].data.push(faturamentoTotal);
-
-            // Se o gráfico tiver mais de 10 pontinhos, remove o primeiro para não amontoar
-            if (graficoVendas.data.labels.length > 10) {
-                graficoVendas.data.labels.shift();
-                graficoVendas.data.datasets[0].data.shift();
-            }
-            graficoVendas.update(); // manda o gráfico carregar os novos valores na tela
-
-            // Esconder o aviso de "Nenhuma venda registrada" se ele estiver aparecendo
-            var avisoVazio = document.getElementById("feed-vazio");
-            if (avisoVazio) {
-                avisoVazio.style.display = "none";
-            }
-
-            // Pegar a hora e minutos do computador de forma simples
-            var dataHora = new Date();
-            var hora = dataHora.getHours();
-            var minuto = dataHora.getMinutes();
-            var horaFormatada = hora + ":" + minuto;
-
-            // Criar o balãozinho do pedido novo juntando textos normais do HTML (super fácil!)
-            var feedPedidos = document.getElementById("feed-pedidos");
-            var itemNovoHTML = '<div class="feed-item">' +
-                '<span>' + clienteSorteado + ' comprou ' + produtoSorteado + ' às ' + horaFormatada + '</span>' +
-                '<span class="feed-preco">+ R$ ' + precoSorteado.toFixed(2) + '</span>' +
-                '</div>';
-
-            // Coloca o pedido novo no topo do feed juntando com os antigos que já estavam lá
-            feedPedidos.innerHTML = itemNovoHTML + feedPedidos.innerHTML;
-        }
-
-        // Função simples para resetar o dashboard e começar do zero
-        function limparTudo() {
-            // Zera todas as variáveis numéricas
-            faturamentoTotal = 0;
-            quantidadePedidos = 0;
-            totalBurger = 0;
-            totalPizza = 0;
-            totalFritas = 0;
-            totalRefri = 0;
-
-            // Restaura as escritas padrão das caixas de texto
-            document.getElementById("kpi-faturamento").innerText = "R$ 0,00";
-            document.getElementById("kpi-pedidos").innerText = "0";
-            document.getElementById("kpi-ticket").innerText = "R$ 0,00";
-            document.getElementById("kpi-ultimo-cliente").innerText = "-";
-            document.getElementById("kpi-ultimo-detalhe").innerText = "Aguardando registro";
-
-            // Restaura as escritas padrão do ranking
-            document.getElementById("rank-burger").innerText = "0 un.";
-            document.getElementById("rank-pizza").innerText = "0 un.";
-            document.getElementById("rank-fritas").innerText = "0 un.";
-            document.getElementById("rank-refri").innerText = "0 un.";
-
-            // Limpa todos os pontos salvos no gráfico e redesenha ele vazio
-            graficoVendas.data.labels = [];
-            graficoVendas.data.datasets[0].data = [];
-            graficoVendas.update();
-
-            // Coloca a mensagem amigável de volta na lista de pedidos vazia
-            document.getElementById("feed-pedidos").innerHTML =
-                '<div id="feed-vazio" class="feed-vazio">' +
-                '<i class="fa-solid fa-folder-open text-muted"></i>' +
-                '<p class="feed-vazio-texto-1">Nenhuma venda registrada.</p>' +
-                '<p class="feed-vazio-texto-2">Aguardando transações...</p>' +
-                '</div>';
-        }
-    </script>
+        </section>
 </body>
 
 </html>
