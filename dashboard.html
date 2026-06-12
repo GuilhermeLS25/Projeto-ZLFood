@@ -3,32 +3,25 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>ZL Food | dashboard Administrativo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZL Food | Dashboard Administrativo</title>
+    <link rel="stylesheet" href="assets/css/style1.css">
 
-    <!-- Link para a folha de estilos separada que contém as variáveis CSS customizadas -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Font Awesome para os ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-    <!-- Configurações de favicon padrão -->
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
-    <link rel="manifest" href="assets/images/site.webmanifest">
-
-    <!-- Font Awesome para renderizar os ícones corporativos -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <!-- Google Fonts integrado -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kadwa:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Kadwa:wght@400;700&display=swap"
+        rel="stylesheet">
 
-    <!-- Chart.js necessário no head para inicialização do gráfico através do app.js -->
+    <!-- Chart.js para renderizar o gráfico de forma simplificada -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body class="dashboard-page">
+<body class="pg-dashboard">
     <div class="container">
         <!-- BARRA LATERAL (SIDEBAR) -->
         <aside class="sidebar">
@@ -154,14 +147,21 @@
 
                     <!-- Feed ao Vivo de Atividade -->
                     <div class="card-custom feed-panel">
-                        <h2 class="titulo-seccao">Histórico de Pedidos (Ao Vivo)</h2>
+                        <div class="panel-header">
+                            <h2 class="titulo-seccao">Histórico de Pedidos</h2>
+                            <span class="tag-live-alerta">Ao Vivo</span>
+                        </div>
 
                         <!-- Lista receptora de novos blocos HTML dinâmicos -->
-                        <div id="feed-pedidos" class="feed-list">
+                        <div id="feed-pedidos" class="feed-list rolagem-custom">
+
                             <!-- Estado Vazio Inicial -->
                             <div id="feed-vazio" class="feed-vazio">
-                                <p>Nenhuma venda registrada até o momento.</p>
+                                <i class="fa-solid fa-folder-open text-muted"></i>
+                                <p class="feed-vazio-texto-1">Nenhuma venda registrada.</p>
+                                <p class="feed-vazio-texto-2">Aguardando transações...</p>
                             </div>
+
                         </div>
                     </div>
 
