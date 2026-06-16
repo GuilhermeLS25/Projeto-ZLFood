@@ -1,24 +1,15 @@
 /* ==================================================
-
 ROOT - VARIÁVEIS GLOBAIS
-
 ================================================== */
 
 :root {
   /* Cores */
-
   --cor-primaria: #8bae66;
-
   --cor-secundaria: #628141;
-
   --cor-secundaria-hover: #557337;
-
   --cor-card: #4c6631;
-
   --cor-escura: #1b211a;
-
   --cor-clara: #ffffff;
-
   --cor-texto-campo: #8a8d85;
 
   --cor-texto-placeholder: #6a6d65;
@@ -465,8 +456,6 @@ input[type="file"] {
   );
 
   color: var(--cor-secundaria);
-
-  transform: translateY(-2px);
 }
 
 hr {
@@ -1520,133 +1509,268 @@ ENTREGADOR
 
 /*========================================
 
-PORTAL DO ENTREGADOR (CSS DO MEU JEITO)
+PORTAL DO ENTREGADOR
 
 ========================================*/
 
-/* Esse é o primeiro botão verde que fica em cima */
-
 .botao-principal-de-cima {
-  margin-bottom: 25px; /* empurra o resto pra baixo */
+  margin-bottom: 25px;
 }
-
-/* Esse é o segundo botão verde que fica embaixo */
 
 .botao-principal-de-baixo {
-  background-color: #2e7d32; /* verde escuro que copiei do google */
+  background-color: #2e7d32;
 }
-
-/* Essa é a linha pontilhada que divide as coisas */
 
 .topo-da-barra-lateral {
-  border-top: 2px dashed #ccc; /* pontinhos cinzas */
+  border-top: 2px dashed #ccc;
 
-  padding-top: 15px; /* espaço pro texto não colar na linha */
+  padding-top: 15px;
 }
-
-/* Espaço embaixo do título do status */
 
 .titulo-do-status {
   margin-bottom: 10px;
 }
 
-/* Tive que mexer no distintivo de ganhos pq ele tava sumindo */
-
 .distintivo-de-ganhos {
-  position: static; /* tirei o position que o outro cara colocou */
-
-  margin: 0; /* zerei pra garantir */
+  position: static;
+  margin: 0;
 }
-
-/* Espaço embaixo do endereço */
 
 .informacao-do-endereco {
   margin-bottom: 10px;
 }
 
-/* Mudar a cor do icone de lojinha pra laranja */
-
 .icone-da-loja {
-  color: #ff9800; /* laranja cor de abóbora */
+  color: #ff9800;
 }
 
-/* Texto pequeno que fica dentro do endereço */
-
 .texto-pequeno-do-endereco {
-  font-size: 0.8rem; /* tamanho menor */
+  font-size: 0.8rem;
 
-  font-weight: normal; /* tira o negrito que o h3 coloca sozinho */
+  font-weight: normal;
 
-  color: #666; /* cinza meio escuro */
+  color: #666;
 }
 
 /* ==================================================
 
-DASHBOARD - ESTILOS ESPECÍFICOS
+DASHBOARD
 
 ================================================== */
 .pg-dashboard {
-  .container-cartoes {
-    display: flex;
-    gap: 20px; /* Espaço entre os cartões */
-    margin-top: 20px;
-    margin-bottom: 30px;
-    margin-left: 350px;
-    
-  }
   .cartao {
     background-color: #ffffff;
-    border: 1px solid #eaeaea; /* Bordinha cinza bem clara, como na sua foto */
-    border-radius: 12px; /* Pontas arredondadas */
+    border: 1px solid #eaeaea;
+    border-radius: 12px;
     padding: 20px;
-    display: flex; /* Coloca o ícone e o texto lado a lado */
-    align-items: center; /* Centraliza a altura do ícone com o texto */
-    gap: 15px; /* Espaço entre o círculo e as letras */
+    align-items: center;
+    gap: 15px;
+
+    width: 100%;
+    flex: 1;
+    display: flex;
+  }
+
+  .dados {
+    display: flex;
+    gap: 20px;
+    margin-left: 270px;
+  }
+
+  .card-pedidos {
+    width: 100%;
+    max-width: 350px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #eaeaeb;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+    overflow: hidden;
+    padding-bottom: 80px;
+    margin-left: 270px;
+    margin-top: 20px;
+  }
+
+  /* Cabeçalho "Mais Pedidos" */
+  .card-header {
+    background-color: #f9f9fb;
+    padding: 20px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1e293b;
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  /* Reset da lista */
+  .lista-pedidos {
+    list-style: none;
+    margin: 0;
+    padding: 0 20px;
+  }
+
+  .item-pedido {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid #e2e8f0;
+    font-size: 1.05rem;
+    color: #1e293b;
+  }
+
+  .item-pedido:last-child {
+    border-bottom: none;
+  }
+
+  .quantidade {
+    font-weight: 700;
+    color: #475569;
   }
 
   .icone-circulo {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%; /* Faz virar uma bolinha perfeita */
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 20px;
+    font-size: 50px;
     font-weight: bold;
   }
 
+  .icone-circulo i {
+    font-size: 35px;
+  }
+
   .icone-verde {
-    background-color: #e8f5e9; /* Fundo verde clarinho */
-    color: #4caf50; /* Letra verde forte */
+    background-color: #e8f5e9;
+    color: #4caf50;
   }
 
   .icone-azul {
-    background-color: #e3f2fd; /* Fundo azul clarinho */
-    color: #2196f3; /* Letra azul forte */
+    background-color: #e3f2fd;
+    color: #2196f3;
   }
 
   .icone-roxo {
-    background-color: #f3e5f5; /* Fundo roxo clarinho */
-    color: #9c27b0; /* Letra roxa forte */
+    background-color: rgba(0, 0, 0, 0.1);
+    color: var(--cor-texto-placeholder);
   }
 
-  /* Formatação dos textos dentro do cartão */
   .info-cartao {
     display: flex;
-    flex-direction: column; /* Coloca o título em cima e o valor embaixo */
+    flex-direction: column;
   }
 
   .titulo-cartao {
-    color: #6c757d; /* Cor cinza para não chamar tanta atenção */
+    color: #6c757d;
     font-size: 14px;
     font-weight: 600;
-    margin-bottom: 4px; /* Espacinho entre o título e o valor */
+    margin-bottom: 4px;
   }
 
   .valor-cartao {
-    color: #2b2b2b; /* Preto quase escuro */
+    color: #2b2b2b;
     font-size: 24px;
-    font-family:
-      "Inter", sans-serif; /* Usando a fonte que você já tem importada */
+    font-family: var(--fonte-principal);
+  }
+}
+
+.pg-cupons {
+  /* Container Principal (Ajuste o padding/margin conforme sua sidebar) */
+  .conteudo-principal {
+    padding: 30px;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    color: #333;
+  }
+
+  /* --- Cabeçalho --- */
+  .cabecalho-gerenciador {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #e5e5e5; /* Cinza do fundo */
+    padding: 15px 30px;
+    border-radius: 30px;
+    margin-bottom: 25px;
+  }
+
+  .cabecalho-gerenciador h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #000;
+  }
+
+  .btn-adicionar {
+    background-color: #6b8e4e; /* Verde oliva da imagem */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px; /* Formato de pílula */
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-adicionar:hover {
+    background-color: #5a7a40;
+  }
+
+  /* --- Container da Tabela --- */
+  .tabela-container {
+    background-color: #e5e5e5;
+    border: 3px solid #3ca3ef; /* Borda azul clara */
+    border-radius: 20px;
+    padding: 20px;
+    margin-left: 270px;
+  }
+
+  .tabela-cupons {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+  }
+
+  .tabela-cupons th {
+    padding: 15px;
+    font-size: 0.95rem;
+    color: #000;
+  }
+
+  .tabela-cupons td {
+    padding: 15px;
+    font-size: 0.9rem;
+    vertical-align: middle;
+  }
+
+  /* --- Elementos da Tabela --- */
+  .badge-ativo {
+    background-color: #6b8e4e;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: bold;
+  }
+
+  .acoes {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .btn-acao {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #6b8e4e;
+    opacity: 0.8;
+  }
+
+  .btn-acao:hover {
+    opacity: 1;
   }
 }
